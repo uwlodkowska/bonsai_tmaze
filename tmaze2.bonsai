@@ -63,7 +63,7 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>close_doors_lf</Name>
+        <Name>cls_drs_ch</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -176,7 +176,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>dispense_left_reward</Name>
+        <Name>disp_l_reward</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -793,7 +793,7 @@ def process(value):
         <Combinator xsi:type="Zip" />
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>cls_drs_ch</Name>
+        <Name>cls_drs_lf</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -1228,7 +1228,7 @@ def process(value):
         <Combinator xsi:type="Zip" />
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>close_doors_rf</Name>
+        <Name>cls_drs_ch</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -1251,6 +1251,258 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
                 <Value>2</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>5</Value>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>cls_drs_rf</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>1</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>2</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>5</Value>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>disp_r_reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-10</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>right_reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it == True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivityDetected">
+                <q3:Index>0</q3:Index>
+                <q3:Threshold>50000</q3:Threshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>opn_drs_r_reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-4</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-3</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1282,6 +1534,98 @@ def process(value):
             <Edge>
               <From>4</From>
               <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Delay">
+          <DueTime>PT3S</DueTime>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>left_return</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it == True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivityDetected">
+                <q3:Index>0</q3:Index>
+                <q3:Threshold>50000</q3:Threshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>cls_drs_r_ret</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>3</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -1362,6 +1706,16 @@ def process(value):
       <Edge>
         <From>9</From>
         <To>25</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>42</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>46</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1465,6 +1819,11 @@ def process(value):
         <Label>Source2</Label>
       </Edge>
       <Edge>
+        <From>25</From>
+        <To>39</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
         <From>26</From>
         <To>1</To>
         <Label>Source1</Label>
@@ -1510,8 +1869,58 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
+        <From>36</From>
+        <To>39</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
         <From>37</From>
         <To>38</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>39</From>
+        <To>40</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>40</From>
+        <To>41</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>41</From>
+        <To>43</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>42</From>
+        <To>43</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>43</From>
+        <To>45</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>44</From>
+        <To>47</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>45</From>
+        <To>44</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>46</From>
+        <To>47</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>47</From>
+        <To>48</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
