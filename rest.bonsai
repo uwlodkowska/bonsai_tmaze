@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.3.0">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="q1:PythonTransform">
+        <q1:Script>@returns(str)
+def process(value):
+  import clr
+  clr.AddReference('System.Web.Extensions')
+  from System.Web.Script.Serialization import JavaScriptSerializer
+  from System.Net import * 
+  from System import Convert
+  from System.Text import Encoding
+  import urllib
+  import httplib
+  import time
+
+  token = 'M6hbQb67DFxjsUeZfEeCwRLnpKzwXLHt'
+  address = 'http://192.168.43.113:16021/api/v1/' + token + '/state'
+
+  connection =  httplib.HTTPConnection('192.168.43.113:16021')
+  body_content = '{"on" : {"value" : ' + str(value).lower() + '}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
+  result = connection.getresponse()
+
+  client = WebClient()
+  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
+  time.sleep(2)
+
+  return str(value).lower()</q1:Script>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>true</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="q1:PythonTransform">
+        <q1:Script>@returns(bool)
+def process(value):
+  import clr
+  clr.AddReference('System.Web.Extensions')
+  from System.Web.Script.Serialization import JavaScriptSerializer
+  from System.Net import * 
+  from System import Convert
+  from System.Text import Encoding
+  import urllib
+  import httplib
+  import time
+
+  token = 'M6hbQb67DFxjsUeZfEeCwRLnpKzwXLHt'
+  address = 'http://192.168.43.113:16021/api/v1/' + token + '/state'
+
+  connection =  httplib.HTTPConnection('192.168.43.113:16021')
+  body_content = '{"on" : {"value" : ' + str(value).lower() + '}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
+  result = connection.getresponse()
+
+  client = WebClient()
+  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
+
+  time.sleep(2)
+
+  return True</q1:Script>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>false</Value>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>1</From>
+        <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
