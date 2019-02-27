@@ -1,208 +1,305 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.3.0">
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q2="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q1="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns="https://horizongir.org/bonsai">
     <Nodes>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>open_doors_lf</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-2</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-1</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it=="lf"</q2:Expression>
+      </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:FileCapture">
-          <q1:FileName>tmaze_ex1.mp4</q1:FileName>
-          <q1:PlaybackRate>0</q1:PlaybackRate>
-          <q1:StartPosition>0</q1:StartPosition>
-          <q1:PositionUnits>Frames</q1:PositionUnits>
-          <q1:Loop>true</q1:Loop>
-          <q1:Playing>true</q1:Playing>
+        <Combinator xsi:type="q1:SerialStringWrite">
+          <q1:PortName>COM3</q1:PortName>
+          <q1:NewLine />
         </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:RoiActivity">
-          <q1:Regions>
-            <q1:ArrayOfPoint>
-              <q1:Point>
-                <q1:X>198</q1:X>
-                <q1:Y>129</q1:Y>
-              </q1:Point>
-              <q1:Point>
-                <q1:X>313</q1:X>
-                <q1:Y>129</q1:Y>
-              </q1:Point>
-              <q1:Point>
-                <q1:X>313</q1:X>
-                <q1:Y>169</q1:Y>
-              </q1:Point>
-              <q1:Point>
-                <q1:X>198</q1:X>
-                <q1:Y>169</q1:Y>
-              </q1:Point>
-            </q1:ArrayOfPoint>
-          </q1:Regions>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:RoiActivityDetected">
-          <q1:Index>0</q1:Index>
-          <q1:Threshold>50000</q1:Threshold>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:TextWriter">
-          <q2:FileName>debug.txt</q2:FileName>
-          <q2:Suffix>None</q2:Suffix>
-          <q2:Buffered>true</q2:Buffered>
-          <q2:Overwrite>true</q2:Overwrite>
-          <q2:Append>false</q2:Append>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:Grayscale" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:RangeThreshold">
-          <q1:Lower>
-            <q1:Val0>140</q1:Val0>
-            <q1:Val1>0</q1:Val1>
-            <q1:Val2>0</q1:Val2>
-            <q1:Val3>0</q1:Val3>
-          </q1:Lower>
-          <q1:Upper>
-            <q1:Val0>170</q1:Val0>
-            <q1:Val1>255</q1:Val1>
-            <q1:Val2>255</q1:Val2>
-            <q1:Val3>255</q1:Val3>
-          </q1:Upper>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="q3:ExpressionCondition">
-        <q3:Expression>it=="l"</q3:Expression>
-      </Expression>
-      <Expression xsi:type="q2:CsvReader">
-        <q2:FileName>input.csv</q2:FileName>
-        <q2:SkipRows>0</q2:SkipRows>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:FindContours">
-          <q1:Mode>External</q1:Mode>
-          <q1:Method>ChainApproxNone</q1:Method>
-          <q1:Offset>
-            <q1:X>0</q1:X>
-            <q1:Y>0</q1:Y>
-          </q1:Offset>
-          <q1:MinArea>200</q1:MinArea>
-          <q1:MaxArea xsi:nil="true" />
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:DrawContours">
-          <q1:MaxLevel>1</q1:MaxLevel>
-          <q1:Thickness>-1</q1:Thickness>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:SerialStringWrite">
-          <q2:PortName>COM3</q2:PortName>
-          <q2:NewLine />
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="q3:ExpressionCondition">
-        <q3:Expression>it == True</q3:Expression>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="DistinctUntilChanged" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="IntProperty">
           <Value>1</Value>
         </Combinator>
       </Expression>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it=="l"</q2:Expression>
+      </Expression>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it=="l"</q2:Expression>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:FileCapture">
+          <q3:FileName>tmaze_ex1.mp4</q3:FileName>
+          <q3:PlaybackRate>0</q3:PlaybackRate>
+          <q3:StartPosition>0</q3:StartPosition>
+          <q3:PositionUnits>Frames</q3:PositionUnits>
+          <q3:Loop>true</q3:Loop>
+          <q3:Playing>true</q3:Playing>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>first_turn</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivity">
+                <q3:Regions>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>198</q3:X>
+                      <q3:Y>129</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>313</q3:X>
+                      <q3:Y>129</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>313</q3:X>
+                      <q3:Y>169</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>198</q3:X>
+                      <q3:Y>169</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                </q3:Regions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:DrawContours">
+                <q3:MaxLevel>1</q3:MaxLevel>
+                <q3:Thickness>-1</q3:Thickness>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:FindContours">
+                <q3:Mode>External</q3:Mode>
+                <q3:Method>ChainApproxNone</q3:Method>
+                <q3:Offset>
+                  <q3:X>0</q3:X>
+                  <q3:Y>0</q3:Y>
+                </q3:Offset>
+                <q3:MinArea>200</q3:MinArea>
+                <q3:MaxArea xsi:nil="true" />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RangeThreshold">
+                <q3:Lower>
+                  <q3:Val0>140</q3:Val0>
+                  <q3:Val1>0</q3:Val1>
+                  <q3:Val2>0</q3:Val2>
+                  <q3:Val3>0</q3:Val3>
+                </q3:Lower>
+                <q3:Upper>
+                  <q3:Val0>170</q3:Val0>
+                  <q3:Val1>255</q3:Val1>
+                  <q3:Val2>255</q3:Val2>
+                  <q3:Val3>255</q3:Val3>
+                </q3:Upper>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Grayscale" />
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="q1:CsvReader">
+        <q1:FileName>input.csv</q1:FileName>
+        <q1:SkipRows>0</q1:SkipRows>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:RoiActivityDetected">
+          <q3:Index>0</q3:Index>
+          <q3:Threshold>50000</q3:Threshold>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it=="l"</q2:Expression>
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it == True</q2:Expression>
       </Expression>
     </Nodes>
     <Edges>
       <Edge>
         <From>0</From>
-        <To>4</To>
-        <Label>Source1</Label>
+        <To>12</To>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>1</From>
+        <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
         <To>2</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>2</From>
-        <To>12</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>4</From>
-        <To>5</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>5</From>
-        <To>8</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
         <From>6</From>
-        <To>14</To>
-        <Label>Source2</Label>
+        <To>7</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>7</From>
-        <To>6</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>8</From>
-        <To>9</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>9</From>
-        <To>1</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>10</From>
-        <To>3</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>11</From>
-        <To>14</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>12</From>
-        <To>11</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>13</From>
         <To>10</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>14</From>
+        <From>8</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>11</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
         <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>9</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>12</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
+        <To>12</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
+    <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FileCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.IO.TextWriter, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.RangeThreshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.DrawContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.RangeThreshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
