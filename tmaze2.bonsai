@@ -134,8 +134,8 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>5</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -374,7 +374,7 @@
                   <q3:X>0</q3:X>
                   <q3:Y>0</q3:Y>
                 </q3:Offset>
-                <q3:MinArea xsi:nil="true" />
+                <q3:MinArea>5</q3:MinArea>
                 <q3:MaxArea xsi:nil="true" />
               </Combinator>
             </Expression>
@@ -561,8 +561,8 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>1</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -612,8 +612,8 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>3</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -661,7 +661,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
                 <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -859,8 +859,8 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>2</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1525,8 +1525,8 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>4</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1740,6 +1740,51 @@ def process(value):
 
   return str(value).lower()</q2:Script>
       </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>right_return</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it == True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivityDetected">
+                <q3:Index>6</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -1825,6 +1870,11 @@ def process(value):
       <Edge>
         <From>9</From>
         <To>45</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>49</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
