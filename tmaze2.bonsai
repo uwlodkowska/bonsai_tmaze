@@ -14,18 +14,18 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>-2</Value>
+                <Value>-4</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM3</q1:PortName>
                 <q1:NewLine />
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>-1</Value>
+                <Value>-2</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -69,7 +69,12 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>4</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -79,13 +84,8 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>1</Value>
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -95,19 +95,28 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>2</Value>
+                <Value>1</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>tmaze07.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
               </Combinator>
             </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>7</To>
+              <To>2</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -117,17 +126,17 @@
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>3</From>
-              <To>2</To>
+              <To>8</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>4</From>
-              <To>3</To>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -138,6 +147,11 @@
             <Edge>
               <From>7</From>
               <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>7</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -203,7 +217,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -242,13 +256,9 @@
         <q2:Expression>it=="r"</q2:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q3:FileCapture">
-          <q3:FileName>C:\ppp\20190226_tmaze_brainbow_tst_small_ir6.avi</q3:FileName>
-          <q3:PlaybackRate>0</q3:PlaybackRate>
-          <q3:StartPosition>0</q3:StartPosition>
-          <q3:PositionUnits>Frames</q3:PositionUnits>
-          <q3:Loop>true</q3:Loop>
-          <q3:Playing>true</q3:Playing>
+        <Combinator xsi:type="q3:CameraCapture">
+          <q3:Index>0</q3:Index>
+          <q3:CaptureProperties />
         </Combinator>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
@@ -260,20 +270,20 @@
                 <q3:Regions>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>306</q3:X>
-                      <q3:Y>338</q3:Y>
+                      <q3:X>266</q3:X>
+                      <q3:Y>335</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>372</q3:X>
-                      <q3:Y>338</q3:Y>
+                      <q3:X>332</q3:X>
+                      <q3:Y>335</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>372</q3:X>
-                      <q3:Y>392</q3:Y>
+                      <q3:X>332</q3:X>
+                      <q3:Y>389</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>306</q3:X>
-                      <q3:Y>392</q3:Y>
+                      <q3:X>266</q3:X>
+                      <q3:Y>389</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
@@ -296,20 +306,20 @@
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>460</q3:X>
-                      <q3:Y>102</q3:Y>
+                      <q3:X>390</q3:X>
+                      <q3:Y>104</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>534</q3:X>
-                      <q3:Y>102</q3:Y>
+                      <q3:X>464</q3:X>
+                      <q3:Y>104</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>534</q3:X>
-                      <q3:Y>146</q3:Y>
+                      <q3:X>464</q3:X>
+                      <q3:Y>148</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>460</q3:X>
-                      <q3:Y>146</q3:Y>
+                      <q3:X>390</q3:X>
+                      <q3:Y>148</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
@@ -332,20 +342,20 @@
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>560</q3:X>
-                      <q3:Y>105</q3:Y>
+                      <q3:X>514</q3:X>
+                      <q3:Y>107</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>604</q3:X>
-                      <q3:Y>105</q3:Y>
+                      <q3:X>558</q3:X>
+                      <q3:Y>107</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>604</q3:X>
-                      <q3:Y>147</q3:Y>
+                      <q3:X>558</q3:X>
+                      <q3:Y>149</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>560</q3:X>
-                      <q3:Y>147</q3:Y>
+                      <q3:X>514</q3:X>
+                      <q3:Y>149</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
@@ -368,20 +378,20 @@
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>576</q3:X>
-                      <q3:Y>215</q3:Y>
+                      <q3:X>525</q3:X>
+                      <q3:Y>208</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>608</q3:X>
-                      <q3:Y>215</q3:Y>
+                      <q3:X>557</q3:X>
+                      <q3:Y>208</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>608</q3:X>
-                      <q3:Y>270</q3:Y>
+                      <q3:X>557</q3:X>
+                      <q3:Y>263</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>576</q3:X>
-                      <q3:Y>270</q3:Y>
+                      <q3:X>525</q3:X>
+                      <q3:Y>263</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                 </q3:Regions>
@@ -396,7 +406,7 @@
                   <q3:Y>0</q3:Y>
                 </q3:Offset>
                 <q3:MinArea>5</q3:MinArea>
-                <q3:MaxArea xsi:nil="true" />
+                <q3:MaxArea>700</q3:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -419,9 +429,14 @@
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:Threshold">
-                <q3:ThresholdValue>83</q3:ThresholdValue>
+                <q3:ThresholdValue>100</q3:ThresholdValue>
                 <q3:MaxValue>255</q3:MaxValue>
                 <q3:ThresholdType>BinaryInv</q3:ThresholdType>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Flip">
+                <q3:Mode>Horizontal</q3:Mode>
               </Combinator>
             </Expression>
           </Nodes>
@@ -443,7 +458,7 @@
             </Edge>
             <Edge>
               <From>3</From>
-              <To>4</To>
+              <To>8</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -461,6 +476,11 @@
               <To>1</To>
               <Label>Source1</Label>
             </Edge>
+            <Edge>
+              <From>8</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
           </Edges>
         </Workflow>
       </Expression>
@@ -475,7 +495,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -485,13 +505,13 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>-4</Value>
+                <Value>-2</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -534,13 +554,13 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>4</Value>
+                <Value>2</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -734,7 +754,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -745,7 +765,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -793,24 +813,28 @@ def process(value):
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>-2</Value>
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>tmaze01.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="IntProperty">
-                <Value>-1</Value>
+                <Value>-4</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -819,8 +843,13 @@ def process(value):
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-1</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -828,21 +857,42 @@ def process(value):
                 <Value>-2</Value>
               </Combinator>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>tmaze02.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>tmaze04.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Zip" />
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>7</To>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>1</From>
-              <To>0</To>
-              <Label>Source1</Label>
+              <To>11</To>
+              <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
+              <To>10</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -856,13 +906,43 @@ def process(value):
               <Label>Source1</Label>
             </Edge>
             <Edge>
+              <From>4</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
               <From>6</From>
-              <To>5</To>
+              <To>9</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>7</From>
               <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>11</To>
+              <Label>Source3</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>11</From>
+              <To>5</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -1403,7 +1483,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
                 <q3:Index>4</q3:Index>
-                <q3:Threshold>1000</q3:Threshold>
+                <q3:Threshold>3000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1515,8 +1595,8 @@ def process(value):
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
-                <q3:Index>0</q3:Index>
-                <q3:Threshold>50000</q3:Threshold>
+                <q3:Index>5</q3:Index>
+                <q3:Threshold>10000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1630,7 +1710,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q3:RoiActivityDetected">
                 <q3:Index>6</q3:Index>
-                <q3:Threshold>1000</q3:Threshold>
+                <q3:Threshold>3000</q3:Threshold>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1743,6 +1823,36 @@ def process(value):
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>tmaze03.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Timestamp" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>tmaze05.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>tmaze10.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -1757,8 +1867,13 @@ def process(value):
       </Edge>
       <Edge>
         <From>1</From>
-        <To>27</To>
+        <To>53</To>
         <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>1</From>
+        <To>27</To>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>2</From>
@@ -1942,6 +2057,11 @@ def process(value):
       </Edge>
       <Edge>
         <From>26</From>
+        <To>51</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>26</From>
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
@@ -1958,7 +2078,7 @@ def process(value):
       <Edge>
         <From>29</From>
         <To>27</To>
-        <Label>Source2</Label>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>31</From>
@@ -2037,6 +2157,16 @@ def process(value):
       </Edge>
       <Edge>
         <From>47</From>
+        <To>52</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>51</From>
+        <To>50</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>52</From>
         <To>24</To>
         <Label>Source1</Label>
       </Edge>
@@ -2045,11 +2175,12 @@ def process(value):
   <ExtensionTypes>
     <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.IO.TextWriter, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.FileCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.DrawContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
@@ -2060,5 +2191,6 @@ def process(value):
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Merge, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
