@@ -9,7 +9,12 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="IntProperty">
+                <Value>-2</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -20,12 +25,7 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>-2</Value>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -46,17 +46,17 @@
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>3</From>
-              <To>2</To>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>4</From>
-              <To>3</To>
+              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -1009,7 +1009,7 @@ def process(value):
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
                 <q1:PortName>COM3</q1:PortName>
-                <q1:NewLine />
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -1018,14 +1018,14 @@ def process(value):
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine />
+              <Combinator xsi:type="IntProperty">
+                <Value>4</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="IntProperty">
-                <Value>1</Value>
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1036,7 +1036,7 @@ def process(value):
           <Edges>
             <Edge>
               <From>0</From>
-              <To>5</To>
+              <To>2</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1046,17 +1046,17 @@ def process(value):
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>3</From>
-              <To>2</To>
+              <To>5</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>4</From>
-              <To>3</To>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -1825,19 +1825,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>tmaze03.txt</q1:FileName>
-          <q1:Suffix>None</q1:Suffix>
-          <q1:Buffered>true</q1:Buffered>
-          <q1:Overwrite>true</q1:Overwrite>
-          <q1:Append>false</q1:Append>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Timestamp" />
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>tmaze05.txt</q1:FileName>
+          <q1:FileName>debug\cls_drs_lf.txt</q1:FileName>
           <q1:Suffix>None</q1:Suffix>
           <q1:Buffered>true</q1:Buffered>
           <q1:Overwrite>true</q1:Overwrite>
@@ -1846,7 +1834,43 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>tmaze10.txt</q1:FileName>
+          <q1:FileName>debug\open_drs_lf.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\left_return.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\open_drs_l_rew.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\cls_drs_ch.txt</q1:FileName>
+          <q1:Suffix>None</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>true</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\open_drs_ch.txt</q1:FileName>
           <q1:Suffix>None</q1:Suffix>
           <q1:Buffered>true</q1:Buffered>
           <q1:Overwrite>true</q1:Overwrite>
@@ -1857,17 +1881,7 @@ def process(value):
     <Edges>
       <Edge>
         <From>0</From>
-        <To>16</To>
-        <Label>Source2</Label>
-      </Edge>
-      <Edge>
-        <From>0</From>
-        <To>28</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>1</From>
-        <To>53</To>
+        <To>51</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1877,7 +1891,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>2</From>
-        <To>18</To>
+        <To>52</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1957,8 +1971,8 @@ def process(value):
       </Edge>
       <Edge>
         <From>11</From>
-        <To>18</To>
-        <Label>Source2</Label>
+        <To>53</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>13</From>
@@ -1982,7 +1996,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>16</From>
-        <To>29</To>
+        <To>50</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -2037,8 +2051,8 @@ def process(value):
       </Edge>
       <Edge>
         <From>24</From>
-        <To>26</To>
-        <Label>Source2</Label>
+        <To>55</To>
+        <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>25</From>
@@ -2057,12 +2071,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>26</From>
-        <To>51</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>26</From>
-        <To>1</To>
+        <To>54</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -2157,18 +2166,43 @@ def process(value):
       </Edge>
       <Edge>
         <From>47</From>
-        <To>52</To>
+        <To>24</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>50</From>
+        <To>29</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>51</From>
-        <To>50</To>
+        <To>16</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>51</From>
+        <To>28</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>52</From>
-        <To>24</To>
+        <To>18</To>
         <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>53</From>
+        <To>18</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>54</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>55</From>
+        <To>26</To>
+        <Label>Source2</Label>
       </Edge>
     </Edges>
   </Workflow>
@@ -2191,6 +2225,5 @@ def process(value):
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Merge, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
