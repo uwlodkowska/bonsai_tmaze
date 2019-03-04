@@ -27,7 +27,7 @@ def process(value):
 
   token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
 
-  connection =  httplib.HTTPConnection('192.168.62.100:16021')
+  connection =  httplib.HTTPConnection('192.168.62.102:16021')
   body_content = '{"select" : "kont.A (automated t-maze) 2019"}'
   connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
   result = connection.getresponse()
@@ -87,7 +87,7 @@ def process(value):
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="SkipUntil" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
@@ -216,7 +216,7 @@ def process(value):
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+        <Combinator xsi:type="SkipUntil" />
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Delay">
@@ -292,8 +292,86 @@ def process(value):
           <q1:Append>false</q1:Append>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Zip" />
+      <Expression xsi:type="Condition">
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="MulticastSubject">
+              <Name>tst</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>behav_s_f.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="BooleanProperty">
+                <Value>false</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Timestamp" />
+            </Expression>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it==True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>tst</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="SkipUntil" />
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>8</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
         <Name>cls_drs_l_ret</Name>
@@ -358,11 +436,15 @@ def process(value):
                     </q3:Point>
                     <q3:Point>
                       <q3:X>332</q3:X>
-                      <q3:Y>389</q3:Y>
+                      <q3:Y>434</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>266</q3:X>
-                      <q3:Y>389</q3:Y>
+                      <q3:X>300</q3:X>
+                      <q3:Y>452</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>267</q3:X>
+                      <q3:Y>435</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
@@ -403,20 +485,20 @@ def process(value):
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>53</q3:X>
-                      <q3:Y>84</q3:Y>
+                      <q3:X>54</q3:X>
+                      <q3:Y>95</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>97</q3:X>
-                      <q3:Y>84</q3:Y>
+                      <q3:X>98</q3:X>
+                      <q3:Y>95</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>97</q3:X>
-                      <q3:Y>126</q3:Y>
+                      <q3:X>98</q3:X>
+                      <q3:Y>137</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>53</q3:X>
-                      <q3:Y>126</q3:Y>
+                      <q3:X>54</q3:X>
+                      <q3:Y>137</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
@@ -439,38 +521,38 @@ def process(value):
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>58</q3:X>
-                      <q3:Y>167</q3:Y>
+                      <q3:X>59</q3:X>
+                      <q3:Y>190</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>90</q3:X>
-                      <q3:Y>167</q3:Y>
+                      <q3:X>96</q3:X>
+                      <q3:Y>190</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>90</q3:X>
-                      <q3:Y>222</q3:Y>
+                      <q3:X>96</q3:X>
+                      <q3:Y>343</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>58</q3:X>
-                      <q3:Y>222</q3:Y>
+                      <q3:X>59</q3:X>
+                      <q3:Y>343</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                   <q3:ArrayOfPoint>
                     <q3:Point>
-                      <q3:X>525</q3:X>
-                      <q3:Y>208</q3:Y>
+                      <q3:X>529</q3:X>
+                      <q3:Y>179</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>557</q3:X>
-                      <q3:Y>208</q3:Y>
+                      <q3:X>566</q3:X>
+                      <q3:Y>179</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>557</q3:X>
-                      <q3:Y>263</q3:Y>
+                      <q3:X>566</q3:X>
+                      <q3:Y>341</q3:Y>
                     </q3:Point>
                     <q3:Point>
-                      <q3:X>525</q3:X>
-                      <q3:Y>263</q3:Y>
+                      <q3:X>529</q3:X>
+                      <q3:Y>341</q3:Y>
                     </q3:Point>
                   </q3:ArrayOfPoint>
                 </q3:Regions>
@@ -745,9 +827,7 @@ def process(value):
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Delay">
-          <DueTime>PT4S</DueTime>
-        </Combinator>
+        <Combinator xsi:type="SkipUntil" />
       </Expression>
       <Expression xsi:type="NestedWorkflow">
         <Name>cls_drs_start</Name>
@@ -837,6 +917,114 @@ def process(value):
           <q1:Append>false</q1:Append>
         </Combinator>
       </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>tst</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>true</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>true</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>tst</Name>
+      </Expression>
+      <Expression xsi:type="Condition">
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:TextWriter">
+                <q1:FileName>behav_s_true.txt</q1:FileName>
+                <q1:Suffix>None</q1:Suffix>
+                <q1:Buffered>true</q1:Buffered>
+                <q1:Overwrite>true</q1:Overwrite>
+                <q1:Append>false</q1:Append>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Timestamp" />
+            </Expression>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it==True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>tst</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="SkipUntil" />
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>6</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>behav_s_zero.txt</q1:FileName>
+          <q1:Suffix>FileCount</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>false</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Timestamp" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Skip">
+          <Count>1</Count>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\cls_drs_l_ret.txt</q1:FileName>
+          <q1:Suffix>FileCount</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>false</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Gate" />
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -851,12 +1039,17 @@ def process(value):
       </Edge>
       <Edge>
         <From>3</From>
-        <To>4</To>
+        <To>22</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>3</From>
+        <To>41</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>5</To>
+        <To>10</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -876,12 +1069,17 @@ def process(value):
       </Edge>
       <Edge>
         <From>8</From>
-        <To>9</To>
+        <To>4</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>9</From>
-        <To>10</To>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
+        <To>40</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -896,17 +1094,22 @@ def process(value):
       </Edge>
       <Edge>
         <From>12</From>
-        <To>13</To>
+        <To>9</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>13</From>
-        <To>14</To>
+        <To>7</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>14</From>
         <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>14</From>
+        <To>34</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -941,7 +1144,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>18</From>
-        <To>9</To>
+        <To>4</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -951,22 +1154,17 @@ def process(value):
       </Edge>
       <Edge>
         <From>20</From>
-        <To>13</To>
+        <To>9</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>21</From>
-        <To>27</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>21</From>
-        <To>28</To>
+        <To>39</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>22</From>
-        <To>1</To>
+        <To>5</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -981,7 +1179,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>25</From>
-        <To>22</To>
+        <To>1</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -991,12 +1189,12 @@ def process(value):
       </Edge>
       <Edge>
         <From>27</From>
-        <To>29</To>
+        <To>36</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>28</From>
-        <To>7</To>
+        <To>41</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1006,7 +1204,47 @@ def process(value):
       </Edge>
       <Edge>
         <From>31</From>
-        <To>4</To>
+        <To>22</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>33</From>
+        <To>32</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>34</From>
+        <To>35</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>36</From>
+        <To>29</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>38</From>
+        <To>37</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>39</From>
+        <To>27</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>39</From>
+        <To>28</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>39</From>
+        <To>38</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>41</From>
+        <To>13</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -1016,9 +1254,13 @@ def process(value):
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.SkipUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
@@ -1026,9 +1268,11 @@ def process(value):
     <Type>Bonsai.Vision.Flip, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Skip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Gate, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
