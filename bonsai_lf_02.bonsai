@@ -292,86 +292,8 @@ def process(value):
           <q1:Append>false</q1:Append>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Condition">
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="MulticastSubject">
-              <Name>tst</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:TextWriter">
-                <q1:FileName>behav_s_f.txt</q1:FileName>
-                <q1:Suffix>None</q1:Suffix>
-                <q1:Buffered>true</q1:Buffered>
-                <q1:Overwrite>true</q1:Overwrite>
-                <q1:Append>false</q1:Append>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="BooleanProperty">
-                <Value>false</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Timestamp" />
-            </Expression>
-            <Expression xsi:type="q2:ExpressionCondition">
-              <q2:Expression>it==True</q2:Expression>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>tst</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="SkipUntil" />
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge>
-              <From>0</From>
-              <To>8</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>2</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>8</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>7</From>
-              <To>6</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>4</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>8</From>
-              <To>5</To>
-              <Label>Source1</Label>
-            </Edge>
-          </Edges>
-        </Workflow>
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it==True</q2:Expression>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
         <Name>cls_drs_l_ret</Name>
@@ -933,80 +855,16 @@ def process(value):
       <Expression xsi:type="MulticastSubject">
         <Name>tst</Name>
       </Expression>
-      <Expression xsi:type="Condition">
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:TextWriter">
-                <q1:FileName>behav_s_true.txt</q1:FileName>
-                <q1:Suffix>None</q1:Suffix>
-                <q1:Buffered>true</q1:Buffered>
-                <q1:Overwrite>true</q1:Overwrite>
-                <q1:Append>false</q1:Append>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Timestamp" />
-            </Expression>
-            <Expression xsi:type="q2:ExpressionCondition">
-              <q2:Expression>it==True</q2:Expression>
-            </Expression>
-            <Expression xsi:type="SubscribeSubject">
-              <Name>tst</Name>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="SkipUntil" />
-            </Expression>
-          </Nodes>
-          <Edges>
-            <Edge>
-              <From>0</From>
-              <To>6</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>4</From>
-              <To>6</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>5</From>
-              <To>4</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>6</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-          </Edges>
-        </Workflow>
+      <Expression xsi:type="MulticastSubject">
+        <Name>tst</Name>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>behav_s_zero.txt</q1:FileName>
-          <q1:Suffix>FileCount</q1:Suffix>
-          <q1:Buffered>true</q1:Buffered>
-          <q1:Overwrite>false</q1:Overwrite>
-          <q1:Append>false</q1:Append>
+        <Combinator xsi:type="BooleanProperty">
+          <Value>false</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Timestamp" />
+      <Expression xsi:type="q2:ExpressionCondition">
+        <q2:Expression>it==True</q2:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Skip">
@@ -1024,6 +882,42 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Gate" />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>tst</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Gate" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Gate" />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>tst</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\gate.txt</q1:FileName>
+          <q1:Suffix>FileCount</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>false</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Take">
+          <Count>1</Count>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Take">
+          <Count>1</Count>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Take">
+          <Count>1</Count>
+        </Combinator>
       </Expression>
     </Nodes>
     <Edges>
@@ -1049,7 +943,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>4</From>
-        <To>10</To>
+        <To>48</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1068,18 +962,18 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
+        <From>7</From>
+        <To>37</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
         <From>8</From>
         <To>4</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>9</From>
-        <To>14</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>9</From>
-        <To>40</To>
+        <To>49</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1164,7 +1058,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>22</From>
-        <To>5</To>
+        <To>47</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1189,18 +1083,13 @@ def process(value):
       </Edge>
       <Edge>
         <From>27</From>
-        <To>36</To>
+        <To>43</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>28</From>
         <To>41</To>
         <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>29</From>
-        <To>24</To>
-        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>31</From>
@@ -1218,14 +1107,19 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>36</From>
+        <From>37</From>
+        <To>36</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>38</From>
         <To>29</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>38</From>
-        <To>37</To>
-        <Label>Source1</Label>
+        <To>24</To>
+        <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>39</From>
@@ -1238,13 +1132,53 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>39</From>
+        <From>41</From>
+        <To>44</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>42</From>
+        <To>43</To>
+        <Label>Source2</Label>
+      </Edge>
+      <Edge>
+        <From>43</From>
         <To>38</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>41</From>
+        <From>43</From>
+        <To>46</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>44</From>
         <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>45</From>
+        <To>44</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>47</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>48</From>
+        <To>10</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>49</From>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>49</From>
+        <To>40</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -1257,9 +1191,6 @@ def process(value):
     <Type>Bonsai.Reactive.SkipUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.IntProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Timestamp, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
@@ -1272,7 +1203,10 @@ def process(value):
     <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Skip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Gate, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
