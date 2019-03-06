@@ -717,9 +717,6 @@ def process(value):
           </Edges>
         </Workflow>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="SkipUntil" />
-      </Expression>
       <Expression xsi:type="NestedWorkflow">
         <Name>cls_drs_start</Name>
         <Workflow>
@@ -817,8 +814,10 @@ def process(value):
       <Expression xsi:type="MulticastSubject">
         <Name>tst</Name>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Gate" />
+      <Expression xsi:type="q2:PythonTransform">
+        <q2:Script>@returns(bool)
+def process(value):
+  return bool(value[0])</q2:Script>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
@@ -853,8 +852,8 @@ def process(value):
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Timestamp" />
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Gate" />
+      <Expression xsi:type="BehaviorSubject">
+        <Name>turned_left</Name>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Timestamp" />
@@ -869,8 +868,8 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>debug\behind_first_fate.txt</q1:FileName>
-          <q1:Suffix>None</q1:Suffix>
+          <q1:FileName>debug\behind_first_gate.txt</q1:FileName>
+          <q1:Suffix>FileCount</q1:Suffix>
           <q1:Buffered>true</q1:Buffered>
           <q1:Overwrite>false</q1:Overwrite>
           <q1:Append>false</q1:Append>
@@ -878,6 +877,37 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Timestamp" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Delay">
+          <DueTime>PT1S</DueTime>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q1:TextWriter">
+          <q1:FileName>debug\reader.txt</q1:FileName>
+          <q1:Suffix>FileCount</q1:Suffix>
+          <q1:Buffered>true</q1:Buffered>
+          <q1:Overwrite>false</q1:Overwrite>
+          <q1:Append>false</q1:Append>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Timestamp" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>false</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Zip" />
       </Expression>
     </Nodes>
     <Edges>
@@ -893,7 +923,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>2</From>
-        <To>21</To>
+        <To>51</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
@@ -923,7 +953,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>8</From>
-        <To>35</To>
+        <To>34</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -933,7 +963,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>10</From>
-        <To>39</To>
+        <To>38</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -943,12 +973,12 @@ def process(value):
       </Edge>
       <Edge>
         <From>12</From>
-        <To>34</To>
+        <To>48</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>13</From>
-        <To>43</To>
+        <To>42</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -978,7 +1008,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>16</From>
-        <To>27</To>
+        <To>26</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -988,7 +1018,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>18</From>
-        <To>23</To>
+        <To>22</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -998,122 +1028,147 @@ def process(value):
       </Edge>
       <Edge>
         <From>20</From>
-        <To>34</To>
+        <To>48</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
         <From>20</From>
-        <To>41</To>
+        <To>40</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>21</From>
-        <To>5</To>
+        <To>45</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>22</From>
-        <To>24</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>23</From>
         <To>19</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>24</From>
+        <From>23</From>
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>25</From>
-        <To>40</To>
+        <From>24</From>
+        <To>49</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>27</From>
-        <To>21</To>
+        <From>24</From>
+        <To>47</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>26</From>
+        <To>51</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>28</From>
+        <To>27</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>29</From>
-        <To>28</To>
+        <To>30</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>30</From>
-        <To>31</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>32</From>
-        <To>33</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>34</From>
-        <To>42</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>34</From>
-        <To>37</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>36</From>
+        <From>31</From>
         <To>32</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>37</From>
+        <From>33</From>
+        <To>41</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>33</From>
         <To>36</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>37</From>
-        <To>40</To>
+        <From>35</From>
+        <To>31</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>36</From>
+        <To>35</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>36</From>
+        <To>49</To>
         <Label>Source2</Label>
       </Edge>
       <Edge>
-        <From>39</From>
+        <From>38</From>
         <To>11</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>40</From>
-        <To>45</To>
+        <To>37</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>41</From>
-        <To>38</To>
+        <To>25</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>42</From>
-        <To>26</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>43</From>
         <To>0</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
+        <From>42</From>
+        <To>29</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
         <From>43</From>
-        <To>30</To>
+        <To>21</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>44</From>
-        <To>22</To>
+        <To>43</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>45</From>
+        <To>23</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>47</From>
+        <To>46</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>48</From>
+        <To>33</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>49</From>
         <To>44</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>50</From>
+        <To>39</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>51</From>
+        <To>5</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -1140,6 +1195,6 @@ def process(value):
     <Type>Bonsai.IO.CsvReader, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Gate, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

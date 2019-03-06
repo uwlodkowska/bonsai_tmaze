@@ -139,7 +139,7 @@
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="q3:RoiActivityDetected">
                             <q3:Index>6</q3:Index>
-                            <q3:Threshold>3000</q3:Threshold>
+                            <q3:Threshold>30000</q3:Threshold>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowInput">
@@ -694,7 +694,7 @@ def process(value):
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="q3:RoiActivityDetected">
                             <q3:Index>5</q3:Index>
-                            <q3:Threshold>3000</q3:Threshold>
+                            <q3:Threshold>30000</q3:Threshold>
                           </Combinator>
                         </Expression>
                         <Expression xsi:type="WorkflowInput">
@@ -1208,7 +1208,7 @@ def process(value):
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q3:RoiActivityDetected">
                       <q3:Index>0</q3:Index>
-                      <q3:Threshold>1000</q3:Threshold>
+                      <q3:Threshold>30000</q3:Threshold>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="WorkflowInput">
@@ -1243,6 +1243,32 @@ def process(value):
                 </Edges>
               </Workflow>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Take">
+                <Count>1</Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:CameraCapture">
+                <q3:Index>0</q3:Index>
+                <q3:CaptureProperties />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="q2:PythonTransform">
+              <q2:Script>@returns(str)
+def process(value):
+  return value[0]</q2:Script>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Zip" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="SkipUntil" />
+            </Expression>
             <Expression xsi:type="NestedWorkflow">
               <Name>rois</Name>
               <Workflow>
@@ -1252,24 +1278,24 @@ def process(value):
                       <q3:Regions>
                         <q3:ArrayOfPoint>
                           <q3:Point>
-                            <q3:X>266</q3:X>
+                            <q3:X>280</q3:X>
                             <q3:Y>335</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>332</q3:X>
+                            <q3:X>310</q3:X>
                             <q3:Y>335</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>332</q3:X>
-                            <q3:Y>434</q3:Y>
+                            <q3:X>310</q3:X>
+                            <q3:Y>410</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>300</q3:X>
-                            <q3:Y>452</q3:Y>
+                            <q3:X>280</q3:X>
+                            <q3:Y>410</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>267</q3:X>
-                            <q3:Y>435</q3:Y>
+                            <q3:X>280</q3:X>
+                            <q3:Y>410</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
@@ -1347,37 +1373,37 @@ def process(value):
                         <q3:ArrayOfPoint>
                           <q3:Point>
                             <q3:X>59</q3:X>
-                            <q3:Y>190</q3:Y>
+                            <q3:Y>250</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>96</q3:X>
-                            <q3:Y>190</q3:Y>
+                            <q3:Y>250</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>96</q3:X>
-                            <q3:Y>343</q3:Y>
+                            <q3:Y>330</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>59</q3:X>
-                            <q3:Y>343</q3:Y>
+                            <q3:Y>330</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
                           <q3:Point>
                             <q3:X>529</q3:X>
-                            <q3:Y>179</q3:Y>
+                            <q3:Y>250</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>566</q3:X>
-                            <q3:Y>179</q3:Y>
+                            <q3:Y>250</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>566</q3:X>
-                            <q3:Y>341</q3:Y>
+                            <q3:Y>320</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>529</q3:X>
-                            <q3:Y>341</q3:Y>
+                            <q3:Y>320</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                       </q3:Regions>
@@ -1470,23 +1496,44 @@ def process(value):
                 </Edges>
               </Workflow>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q3:CameraCapture">
-                <q3:Index>0</q3:Index>
-                <q3:CaptureProperties />
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="q2:PythonTransform">
-              <q2:Script>@returns(str)
-def process(value):
-  return value[0]</q2:Script>
-            </Expression>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Zip" />
+            <Expression xsi:type="NestedWorkflow">
+              <Name>cls_drs_start</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q1:SerialStringWrite">
+                      <q1:PortName>COM3</q1:PortName>
+                      <q1:NewLine>\n</q1:NewLine>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="StringProperty">
+                      <Value>1,3</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge>
+                    <From>0</From>
+                    <To>3</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>1</From>
+                    <To>0</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>2</From>
+                    <To>1</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                </Edges>
+              </Workflow>
             </Expression>
           </Nodes>
           <Edges>
@@ -1502,8 +1549,8 @@ def process(value):
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
-              <Label>Source1</Label>
+              <To>17</To>
+              <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>3</From>
@@ -1551,23 +1598,18 @@ def process(value):
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>11</From>
-              <To>10</To>
+              <From>10</From>
+              <To>17</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>11</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>11</From>
-              <To>4</To>
+              <To>19</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>12</From>
-              <To>11</To>
+              <To>18</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1585,16 +1627,33 @@ def process(value):
               <To>7</To>
               <Label>Source1</Label>
             </Edge>
+            <Edge>
+              <From>17</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>18</From>
+              <To>10</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>18</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>18</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>19</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
           </Edges>
         </Workflow>
-      </Expression>
-      <Expression xsi:type="BehaviorSubject">
-        <Name>instruction</Name>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="StringProperty">
-          <Value>none</Value>
-        </Combinator>
       </Expression>
     </Nodes>
     <Edges>
@@ -1658,11 +1717,6 @@ def process(value):
         <To>11</To>
         <Label>Source1</Label>
       </Edge>
-      <Edge>
-        <From>15</From>
-        <To>14</To>
-        <Label>Source1</Label>
-      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -1683,12 +1737,12 @@ def process(value):
     <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.DrawContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Flip, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
