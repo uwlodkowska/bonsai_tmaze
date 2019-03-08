@@ -63,6 +63,114 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
+        <Name>opn_left_valve</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>-20</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT5S</DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>opn_right_valve</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>20</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT5S</DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:KeyDown">
+          <q2:Filter>A</q2:Filter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:KeyDown">
+          <q2:Filter>S</q2:Filter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
         <Name>doors_up</Name>
         <Workflow>
           <Nodes>
@@ -124,6 +232,70 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q2:KeyDown">
+          <q2:Filter>Left</q2:Filter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>right_drop</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>10</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT5S</DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:KeyDown">
+          <q2:Filter>D</q2:Filter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:KeyDown">
+          <q2:Filter>Right</q2:Filter>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q2:KeyDown">
           <q2:Filter>Down</q2:Filter>
         </Combinator>
       </Expression>
@@ -132,18 +304,62 @@
           <q2:Filter>Up</q2:Filter>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q2:KeyDown">
-          <q2:Filter>Left</q2:Filter>
-        </Combinator>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>cls_left_valve</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>-30</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT5S</DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q2:KeyDown">
-          <q2:Filter>Right</q2:Filter>
+          <q2:Filter>F</q2:Filter>
         </Combinator>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>opn_left_valve</Name>
+        <Name>left_drop</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -192,7 +408,7 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="NestedWorkflow">
-        <Name>opn_right_valve</Name>
+        <Name>cls_right_valve</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="Combinator">
@@ -203,7 +419,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty">
-                <Value>10</Value>
+                <Value>30</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -243,23 +459,43 @@
     </Nodes>
     <Edges>
       <Edge>
-        <From>2</From>
-        <To>0</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
         <From>3</From>
         <To>1</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>4</From>
-        <To>6</To>
+        <To>2</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>5</From>
+        <From>6</From>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>8</From>
+        <To>12</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>9</From>
         <To>7</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>10</From>
+        <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>11</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>13</From>
+        <To>15</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -267,7 +503,7 @@
   <ExtensionTypes>
     <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
