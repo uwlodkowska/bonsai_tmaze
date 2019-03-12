@@ -286,46 +286,7 @@
                     </Workflow>
                   </Expression>
                   <Expression xsi:type="NestedWorkflow">
-                    <Name>disp_r_reward</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="q1:SerialStringWrite">
-                            <q1:PortName>COM4</q1:PortName>
-                            <q1:NewLine>\n</q1:NewLine>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="IntProperty">
-                            <Value>10</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge>
-                          <From>0</From>
-                          <To>3</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>1</From>
-                          <To>0</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>2</From>
-                          <To>1</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="NestedWorkflow">
-                    <Name>cls_drs_rf</Name>
+                    <Name>drs_reward</Name>
                     <Workflow>
                       <Nodes>
                         <Expression xsi:type="Combinator">
@@ -351,7 +312,7 @@
                         </Expression>
                         <Expression xsi:type="Combinator">
                           <Combinator xsi:type="StringProperty">
-                            <Value>1</Value>
+                            <Value>1,10</Value>
                           </Combinator>
                         </Expression>
                       </Nodes>
@@ -627,7 +588,7 @@ def process(value):
                 <Edges>
                   <Edge>
                     <From>0</From>
-                    <To>17</To>
+                    <To>16</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -687,62 +648,57 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>12</From>
-                    <To>11</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>13</From>
-                    <To>19</To>
+                    <To>18</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>14</From>
-                    <To>13</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>15</From>
+                    <From>13</From>
                     <To>12</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>15</From>
+                    <From>14</From>
+                    <To>11</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>14</From>
                     <To>7</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>15</From>
+                    <From>14</From>
                     <To>3</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
+                    <From>14</From>
+                    <To>17</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
                     <From>15</From>
+                    <To>13</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>17</From>
                     <To>18</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>16</From>
-                    <To>14</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
                     <From>18</From>
-                    <To>19</To>
+                    <To>20</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>19</From>
-                    <To>21</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>20</From>
-                    <To>11</To>
+                    <To>10</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>21</From>
-                    <To>20</To>
+                    <From>20</From>
+                    <To>19</To>
                     <Label>Source1</Label>
                   </Edge>
                 </Edges>
@@ -958,45 +914,6 @@ def process(value):
                     </Workflow>
                   </Expression>
                   <Expression xsi:type="NestedWorkflow">
-                    <Name>disp_l_reward</Name>
-                    <Workflow>
-                      <Nodes>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="q1:SerialStringWrite">
-                            <q1:PortName>COM4</q1:PortName>
-                            <q1:NewLine>\n</q1:NewLine>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="Combinator">
-                          <Combinator xsi:type="IntProperty">
-                            <Value>-10</Value>
-                          </Combinator>
-                        </Expression>
-                        <Expression xsi:type="WorkflowInput">
-                          <Name>Source1</Name>
-                        </Expression>
-                        <Expression xsi:type="WorkflowOutput" />
-                      </Nodes>
-                      <Edges>
-                        <Edge>
-                          <From>0</From>
-                          <To>3</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>1</From>
-                          <To>0</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>2</From>
-                          <To>1</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                      </Edges>
-                    </Workflow>
-                  </Expression>
-                  <Expression xsi:type="NestedWorkflow">
                     <Name>cls_drs_lf</Name>
                     <Workflow>
                       <Nodes>
@@ -1015,11 +932,22 @@ def process(value):
                           <Name>Source1</Name>
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="q1:SerialStringWrite">
+                            <q1:PortName>COM4</q1:PortName>
+                            <q1:NewLine>\n</q1:NewLine>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="StringProperty">
+                            <Value>2,4,-10</Value>
+                          </Combinator>
+                        </Expression>
                       </Nodes>
                       <Edges>
                         <Edge>
                           <From>0</From>
-                          <To>3</To>
+                          <To>5</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
@@ -1030,6 +958,16 @@ def process(value):
                         <Edge>
                           <From>2</From>
                           <To>1</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>4</From>
+                          <To>3</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>5</From>
+                          <To>4</To>
                           <Label>Source1</Label>
                         </Edge>
                       </Edges>
@@ -1257,7 +1195,7 @@ def process(value):
                 <Edges>
                   <Edge>
                     <From>0</From>
-                    <To>17</To>
+                    <To>16</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -1317,62 +1255,57 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>12</From>
-                    <To>11</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>13</From>
-                    <To>18</To>
+                    <To>17</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>14</From>
-                    <To>13</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>15</From>
+                    <From>13</From>
                     <To>12</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>15</From>
+                    <From>14</From>
+                    <To>11</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>14</From>
                     <To>7</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>15</From>
+                    <From>14</From>
                     <To>3</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>15</From>
-                    <To>21</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>16</From>
-                    <To>14</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>18</From>
+                    <From>14</From>
                     <To>20</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>19</From>
-                    <To>11</To>
-                    <Label>Source2</Label>
+                    <From>15</From>
+                    <To>13</To>
+                    <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>20</From>
+                    <From>17</From>
                     <To>19</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>21</From>
+                    <From>18</From>
+                    <To>10</To>
+                    <Label>Source2</Label>
+                  </Edge>
+                  <Edge>
+                    <From>19</From>
                     <To>18</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>20</From>
+                    <To>17</To>
                     <Label>Source1</Label>
                   </Edge>
                 </Edges>
@@ -1602,7 +1535,7 @@ def process(value):
                   <Expression xsi:type="WorkflowOutput" />
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q3:Threshold">
-                      <q3:ThresholdValue>80</q3:ThresholdValue>
+                      <q3:ThresholdValue>43</q3:ThresholdValue>
                       <q3:MaxValue>255</q3:MaxValue>
                       <q3:ThresholdType>BinaryInv</q3:ThresholdType>
                     </Combinator>
@@ -1698,12 +1631,12 @@ def process(value):
                         </Expression>
                         <Expression xsi:type="WorkflowOutput" />
                         <Expression xsi:type="NestedWorkflow">
-                          <Name>cls_d_choice</Name>
+                          <Name>drs_reward</Name>
                           <Workflow>
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>1</Value>
+                                  <Value>1,10</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -1758,45 +1691,6 @@ def process(value):
                           </Workflow>
                         </Expression>
                         <Expression xsi:type="NestedWorkflow">
-                          <Name>disp_reward</Name>
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                              <Expression xsi:type="Combinator">
-                                <Combinator xsi:type="q1:SerialStringWrite">
-                                  <q1:PortName>COM4</q1:PortName>
-                                  <q1:NewLine>\n</q1:NewLine>
-                                </Combinator>
-                              </Expression>
-                              <Expression xsi:type="Combinator">
-                                <Combinator xsi:type="StringProperty">
-                                  <Value>10</Value>
-                                </Combinator>
-                              </Expression>
-                            </Nodes>
-                            <Edges>
-                              <Edge>
-                                <From>0</From>
-                                <To>3</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                              <Edge>
-                                <From>2</From>
-                                <To>1</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                              <Edge>
-                                <From>3</From>
-                                <To>2</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="NestedWorkflow">
                           <Name>open_return</Name>
                           <Workflow>
                             <Nodes>
@@ -1844,7 +1738,7 @@ def process(value):
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>-2,-3</Value>
+                                  <Value>-3</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -1988,21 +1882,31 @@ def process(value):
                             </Edges>
                           </Workflow>
                         </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
                       </Nodes>
                       <Edges>
                         <Edge>
                           <From>0</From>
-                          <To>6</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>1</From>
-                          <To>10</To>
+                          <To>11</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
                           <From>1</From>
                           <To>9</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>1</From>
+                          <To>8</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
@@ -2012,37 +1916,42 @@ def process(value):
                         </Edge>
                         <Edge>
                           <From>4</From>
-                          <To>5</To>
-                          <Label>Source1</Label>
+                          <To>0</To>
+                          <Label>Source2</Label>
                         </Edge>
                         <Edge>
                           <From>5</From>
-                          <To>0</To>
+                          <To>6</To>
                           <Label>Source2</Label>
                         </Edge>
                         <Edge>
                           <From>6</From>
-                          <To>7</To>
-                          <Label>Source2</Label>
-                        </Edge>
-                        <Edge>
-                          <From>7</From>
-                          <To>8</To>
+                          <To>10</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
-                          <From>8</From>
+                          <From>7</From>
                           <To>3</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
-                          <From>9</From>
+                          <From>8</From>
                           <To>0</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>9</From>
+                          <To>6</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
                           <From>10</From>
                           <To>7</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>11</From>
+                          <To>5</To>
                           <Label>Source1</Label>
                         </Edge>
                       </Edges>
@@ -2214,11 +2123,16 @@ def process(value):
                             </Edges>
                           </Workflow>
                         </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
                       </Nodes>
                       <Edges>
                         <Edge>
                           <From>0</From>
-                          <To>5</To>
+                          <To>7</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
@@ -2245,6 +2159,11 @@ def process(value):
                           <From>6</From>
                           <To>0</To>
                           <Label>Source2</Label>
+                        </Edge>
+                        <Edge>
+                          <From>7</From>
+                          <To>5</To>
+                          <Label>Source1</Label>
                         </Edge>
                       </Edges>
                     </Workflow>
@@ -2359,7 +2278,7 @@ def process(value):
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>1</Value>
+                                  <Value>1,-10</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -2414,45 +2333,6 @@ def process(value):
                           </Workflow>
                         </Expression>
                         <Expression xsi:type="NestedWorkflow">
-                          <Name>disp_reward</Name>
-                          <Workflow>
-                            <Nodes>
-                              <Expression xsi:type="WorkflowInput">
-                                <Name>Source1</Name>
-                              </Expression>
-                              <Expression xsi:type="WorkflowOutput" />
-                              <Expression xsi:type="Combinator">
-                                <Combinator xsi:type="q1:SerialStringWrite">
-                                  <q1:PortName>COM4</q1:PortName>
-                                  <q1:NewLine>\n</q1:NewLine>
-                                </Combinator>
-                              </Expression>
-                              <Expression xsi:type="Combinator">
-                                <Combinator xsi:type="StringProperty">
-                                  <Value>-10</Value>
-                                </Combinator>
-                              </Expression>
-                            </Nodes>
-                            <Edges>
-                              <Edge>
-                                <From>0</From>
-                                <To>3</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                              <Edge>
-                                <From>2</From>
-                                <To>1</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                              <Edge>
-                                <From>3</From>
-                                <To>2</To>
-                                <Label>Source1</Label>
-                              </Edge>
-                            </Edges>
-                          </Workflow>
-                        </Expression>
-                        <Expression xsi:type="NestedWorkflow">
                           <Name>open_return</Name>
                           <Workflow>
                             <Nodes>
@@ -2500,7 +2380,7 @@ def process(value):
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>-2,-1</Value>
+                                  <Value>-1</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -2554,16 +2434,26 @@ def process(value):
                             </Edges>
                           </Workflow>
                         </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
                       </Nodes>
                       <Edges>
                         <Edge>
                           <From>0</From>
-                          <To>9</To>
+                          <To>8</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
                           <From>1</From>
-                          <To>8</To>
+                          <To>11</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
@@ -2588,27 +2478,32 @@ def process(value):
                         </Edge>
                         <Edge>
                           <From>6</From>
-                          <To>7</To>
-                          <Label>Source1</Label>
-                        </Edge>
-                        <Edge>
-                          <From>7</From>
                           <To>1</To>
                           <Label>Source2</Label>
                         </Edge>
                         <Edge>
-                          <From>8</From>
-                          <To>9</To>
+                          <From>7</From>
+                          <To>8</To>
                           <Label>Source2</Label>
                         </Edge>
                         <Edge>
-                          <From>9</From>
+                          <From>8</From>
                           <To>10</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
-                          <From>10</From>
+                          <From>9</From>
                           <To>5</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>10</From>
+                          <To>9</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>11</From>
+                          <To>7</To>
                           <Label>Source1</Label>
                         </Edge>
                       </Edges>
@@ -3003,11 +2898,16 @@ def process(value):
                             </Edges>
                           </Workflow>
                         </Expression>
+                        <Expression xsi:type="Combinator">
+                          <Combinator xsi:type="Take">
+                            <Count>1</Count>
+                          </Combinator>
+                        </Expression>
                       </Nodes>
                       <Edges>
                         <Edge>
                           <From>0</From>
-                          <To>4</To>
+                          <To>7</To>
                           <Label>Source1</Label>
                         </Edge>
                         <Edge>
@@ -3033,6 +2933,11 @@ def process(value):
                         <Edge>
                           <From>6</From>
                           <To>0</To>
+                          <Label>Source1</Label>
+                        </Edge>
+                        <Edge>
+                          <From>7</From>
+                          <To>4</To>
                           <Label>Source1</Label>
                         </Edge>
                       </Edges>
@@ -3380,6 +3285,11 @@ def process(value):
                 </Edges>
               </Workflow>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT4S</DueTime>
+              </Combinator>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
@@ -3394,7 +3304,7 @@ def process(value):
             </Edge>
             <Edge>
               <From>2</From>
-              <To>1</To>
+              <To>18</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -3490,6 +3400,11 @@ def process(value):
             <Edge>
               <From>17</From>
               <To>15</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>18</From>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
