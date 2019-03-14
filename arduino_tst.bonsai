@@ -77,11 +77,6 @@
                 <Value>-20</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Delay">
-                <DueTime>PT5S</DueTime>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
@@ -90,7 +85,7 @@
           <Edges>
             <Edge>
               <From>0</From>
-              <To>4</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -101,11 +96,6 @@
             <Edge>
               <From>2</From>
               <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -126,11 +116,6 @@
                 <Value>20</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Delay">
-                <DueTime>PT5S</DueTime>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
@@ -139,7 +124,7 @@
           <Edges>
             <Edge>
               <From>0</From>
-              <To>4</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -150,11 +135,6 @@
             <Edge>
               <From>2</From>
               <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -319,11 +299,6 @@
                 <Value>-30</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Delay">
-                <DueTime>PT5S</DueTime>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
@@ -332,7 +307,7 @@
           <Edges>
             <Edge>
               <From>0</From>
-              <To>4</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -343,11 +318,6 @@
             <Edge>
               <From>2</From>
               <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -422,11 +392,6 @@
                 <Value>30</Value>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Delay">
-                <DueTime>PT5S</DueTime>
-              </Combinator>
-            </Expression>
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
@@ -435,7 +400,7 @@
           <Edges>
             <Edge>
               <From>0</From>
-              <To>4</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -446,11 +411,6 @@
             <Edge>
               <From>2</From>
               <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>3</From>
-              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -503,7 +463,7 @@
   <ExtensionTypes>
     <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
