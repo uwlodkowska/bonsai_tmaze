@@ -11,9 +11,6 @@
                 <Count>1</Count>
               </Combinator>
             </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="SkipUntil" />
-            </Expression>
             <Expression xsi:type="NestedWorkflow">
               <Name>cls_rew_acc</Name>
               <Workflow>
@@ -30,7 +27,7 @@
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="StringProperty">
-                      <Value>-2,3</Value>
+                      <Value>3</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
@@ -41,7 +38,7 @@
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="StringProperty">
-                      <Value>2,3</Value>
+                      <Value>2,3,-1</Value>
                     </Combinator>
                   </Expression>
                 </Nodes>
@@ -80,7 +77,7 @@
                 <Nodes>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="StringProperty">
-                      <Value>2,3</Value>
+                      <Value>2,3,-1</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="Combinator">
@@ -101,7 +98,7 @@
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="StringProperty">
-                      <Value>-2,1</Value>
+                      <Value>1</Value>
                     </Combinator>
                   </Expression>
                 </Nodes>
@@ -200,7 +197,7 @@
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q3:RoiActivityDetected">
                       <q3:Index>6</q3:Index>
-                      <q3:Threshold>3000</q3:Threshold>
+                      <q3:Threshold>8000</q3:Threshold>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="WorkflowInput">
@@ -334,18 +331,29 @@
                   </Expression>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="StringProperty">
-                      <Value>2,-3,-1</Value>
+                      <Value>-3,-1</Value>
                     </Combinator>
                   </Expression>
                   <Expression xsi:type="WorkflowInput">
                     <Name>Source1</Name>
                   </Expression>
                   <Expression xsi:type="WorkflowOutput" />
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q1:SerialStringWrite">
+                      <q1:PortName>COM4</q1:PortName>
+                      <q1:NewLine>\n</q1:NewLine>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="StringProperty">
+                      <Value>1</Value>
+                    </Combinator>
+                  </Expression>
                 </Nodes>
                 <Edges>
                   <Edge>
                     <From>0</From>
-                    <To>3</To>
+                    <To>5</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -356,6 +364,16 @@
                   <Edge>
                     <From>2</From>
                     <To>1</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>4</From>
+                    <To>3</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>5</From>
+                    <To>4</To>
                     <Label>Source1</Label>
                   </Edge>
                 </Edges>
@@ -405,9 +423,6 @@
                   </Edge>
                 </Edges>
               </Workflow>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="SkipUntil" />
             </Expression>
             <Expression xsi:type="NestedWorkflow">
               <Name>central_corr</Name>
@@ -461,56 +476,6 @@
               <Combinator xsi:type="Take">
                 <Count>1</Count>
               </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Take">
-                <Count>1</Count>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="NestedWorkflow">
-              <Name>start</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="q2:ExpressionCondition">
-                    <q2:Expression>it == True</q2:Expression>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="DistinctUntilChanged" />
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:RoiActivityDetected">
-                      <q3:Index>0</q3:Index>
-                      <q3:Threshold>30000</q3:Threshold>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="WorkflowInput">
-                    <Name>Source1</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                </Nodes>
-                <Edges>
-                  <Edge>
-                    <From>0</From>
-                    <To>4</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>1</From>
-                    <To>0</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>2</From>
-                    <To>1</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>3</From>
-                    <To>2</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                </Edges>
-              </Workflow>
             </Expression>
             <Expression xsi:type="NestedWorkflow">
               <Name>rois</Name>
@@ -611,42 +576,58 @@
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
                           <q3:Point>
-                            <q3:X>55</q3:X>
-                            <q3:Y>254</q3:Y>
+                            <q3:X>60</q3:X>
+                            <q3:Y>240</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>95</q3:X>
-                            <q3:Y>252</q3:Y>
+                            <q3:X>100</q3:X>
+                            <q3:Y>238</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>98</q3:X>
-                            <q3:Y>336</q3:Y>
+                            <q3:X>103</q3:X>
+                            <q3:Y>322</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>56</q3:X>
-                            <q3:Y>336</q3:Y>
+                            <q3:X>179</q3:X>
+                            <q3:Y>362</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>81</q3:X>
+                            <q3:Y>342</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>68</q3:X>
+                            <q3:Y>307</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
                           <q3:Point>
-                            <q3:X>535</q3:X>
-                            <q3:Y>249</q3:Y>
+                            <q3:X>542</q3:X>
+                            <q3:Y>288</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>565</q3:X>
-                            <q3:Y>249</q3:Y>
+                            <q3:X>526</q3:X>
+                            <q3:Y>244</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>565</q3:X>
-                            <q3:Y>304</q3:Y>
+                            <q3:X>556</q3:X>
+                            <q3:Y>244</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>536</q3:X>
-                            <q3:Y>329</q3:Y>
+                            <q3:X>556</q3:X>
+                            <q3:Y>299</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>535</q3:X>
-                            <q3:Y>304</q3:Y>
+                            <q3:X>522</q3:X>
+                            <q3:Y>366</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>477</q3:X>
+                            <q3:Y>363</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>429</q3:X>
+                            <q3:Y>372</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
@@ -969,23 +950,23 @@
           <Edges>
             <Edge>
               <From>0</From>
-              <To>22</To>
+              <To>18</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>1</From>
-              <To>0</To>
+              <To>21</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>2</From>
-              <To>25</To>
-              <Label>Source1</Label>
+              <To>21</To>
+              <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>3</From>
-              <To>25</To>
-              <Label>Source2</Label>
+              <To>22</To>
+              <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>4</From>
@@ -994,177 +975,147 @@
             </Edge>
             <Edge>
               <From>5</From>
-              <To>30</To>
+              <To>3</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>6</From>
-              <To>4</To>
+              <To>20</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>7</From>
-              <To>24</To>
+              <To>4</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>8</From>
-              <To>5</To>
+              <To>7</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>9</From>
-              <To>8</To>
+              <To>19</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>10</From>
-              <To>23</To>
+              <To>8</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>11</From>
+              <From>12</From>
               <To>9</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>13</From>
-              <To>10</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>14</From>
-              <To>17</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>15</From>
-              <To>14</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>16</From>
-              <To>29</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>17</From>
-              <To>12</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>17</From>
-              <To>9</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>17</From>
-              <To>10</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>18</From>
-              <To>14</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>19</From>
-              <To>18</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>19</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>20</From>
-              <To>11</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>20</From>
-              <To>6</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>20</From>
-              <To>19</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>20</From>
               <To>15</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>20</From>
+              <From>14</From>
+              <To>25</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>15</From>
+              <To>11</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>15</From>
+              <To>8</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>15</From>
+              <To>9</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>16</From>
+              <To>10</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>16</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>16</From>
               <To>13</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>20</From>
-              <To>7</To>
+              <From>16</From>
+              <To>12</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>21</From>
-              <To>20</To>
+              <From>16</From>
+              <To>6</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>23</From>
-              <To>31</To>
+              <From>17</From>
+              <To>16</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>24</From>
+              <From>19</From>
               <To>27</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>25</From>
-              <To>1</To>
-              <Label>Source2</Label>
+              <From>20</From>
+              <To>23</To>
+              <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>26</From>
+              <From>21</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>22</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>23</From>
               <To>2</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>27</From>
+              <From>24</From>
+              <To>14</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>25</From>
               <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>28</From>
-              <To>16</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>29</From>
-              <To>4</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>29</From>
+              <From>25</From>
+              <To>20</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>26</From>
               <To>24</To>
-              <Label>Source2</Label>
-            </Edge>
-            <Edge>
-              <From>30</From>
-              <To>28</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>30</From>
-              <To>16</To>
+              <From>26</From>
+              <To>14</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>31</From>
-              <To>30</To>
+              <From>27</From>
+              <To>26</To>
               <Label>Source2</Label>
             </Edge>
           </Edges>
@@ -1214,7 +1165,7 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty">
-                <Value>1,2,3</Value>
+                <Value>1,3</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="q2:PythonTransform">
@@ -1247,6 +1198,17 @@ def process(value):
             <Expression xsi:type="WorkflowInput">
               <Name>Source1</Name>
             </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>1</Value>
+              </Combinator>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
@@ -1271,7 +1233,7 @@ def process(value):
             </Edge>
             <Edge>
               <From>5</From>
-              <To>7</To>
+              <To>10</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1287,6 +1249,16 @@ def process(value):
             <Edge>
               <From>8</From>
               <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>10</From>
+              <To>9</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -1338,13 +1310,13 @@ def process(value):
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM3</q1:PortName>
+                <q1:PortName>COM4</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="StringProperty">
-                <Value>-2</Value>
+                <Value>-1</Value>
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowInput">
@@ -1427,9 +1399,9 @@ def process(value):
   </Workflow>
   <ExtensionTypes>
     <Type>Bonsai.Reactive.Take, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.SkipUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.SkipUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
