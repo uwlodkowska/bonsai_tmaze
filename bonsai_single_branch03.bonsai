@@ -1775,7 +1775,7 @@ def process(value):
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>1</Value>
+                                  <Value>1,-3</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
@@ -2123,7 +2123,7 @@ def process(value):
                               </Expression>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>4,2,3</Value>
+                                  <Value>4,2,3,-1</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="WorkflowInput">
@@ -2417,7 +2417,7 @@ def process(value):
                             <Nodes>
                               <Expression xsi:type="Combinator">
                                 <Combinator xsi:type="StringProperty">
-                                  <Value>3</Value>
+                                  <Value>3,-1</Value>
                                 </Combinator>
                               </Expression>
                               <Expression xsi:type="Combinator">
