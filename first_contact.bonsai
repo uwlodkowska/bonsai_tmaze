@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.3.0">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns="https://horizongir.org/bonsai">
+    <Nodes>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>disp_reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM5</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>-10</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>left_turn</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it == True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivityDetected">
+                <q3:Index>1</q3:Index>
+                <q3:Threshold>5000</q3:Threshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>disp_reward</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM5</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>10</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>prepare_ctx</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM3</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>-1,-2,-3,-4</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q1:SerialStringWrite">
+                <q1:PortName>COM4</q1:PortName>
+                <q1:NewLine>\n</q1:NewLine>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>-1,-2,-3</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="q2:PythonTransform">
+              <q2:Name>ctx_neutral</q2:Name>
+              <q2:Script>@returns(str)
+def process(value):
+  import clr
+  clr.AddReference('System.Web.Extensions')
+  from System.Web.Script.Serialization import JavaScriptSerializer
+  from System.Net import * 
+  from System import Convert
+  from System.Text import Encoding
+  import urllib
+  import httplib
+  import time
+
+  token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
+
+  connection =  httplib.HTTPConnection('192.168.62.102:16021')
+  body_content = '{"select" : "kont. neutral (automated t-maze) 2019"}'
+  connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
+  result = connection.getresponse()
+
+  client = WebClient()
+  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
+  time.sleep(2)
+
+  return str(value).lower()</q2:Script>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>5</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>6</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>right_turn</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it == True</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="DistinctUntilChanged" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivityDetected">
+                <q3:Index>2</q3:Index>
+                <q3:Threshold>1000</q3:Threshold>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="NestedWorkflow">
+        <Name>rois</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:RoiActivity">
+                <q3:Regions>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>270</q3:X>
+                      <q3:Y>345</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>336</q3:X>
+                      <q3:Y>345</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>336</q3:X>
+                      <q3:Y>399</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>270</q3:X>
+                      <q3:Y>399</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>71</q3:X>
+                      <q3:Y>104</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>218</q3:X>
+                      <q3:Y>104</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>218</q3:X>
+                      <q3:Y>144</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>71</q3:X>
+                      <q3:Y>144</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>390</q3:X>
+                      <q3:Y>104</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>558</q3:X>
+                      <q3:Y>104</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>558</q3:X>
+                      <q3:Y>148</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>390</q3:X>
+                      <q3:Y>148</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>71</q3:X>
+                      <q3:Y>103</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>115</q3:X>
+                      <q3:Y>103</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>115</q3:X>
+                      <q3:Y>145</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>71</q3:X>
+                      <q3:Y>145</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>514</q3:X>
+                      <q3:Y>107</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>558</q3:X>
+                      <q3:Y>107</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>558</q3:X>
+                      <q3:Y>149</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>514</q3:X>
+                      <q3:Y>149</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>60</q3:X>
+                      <q3:Y>240</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>100</q3:X>
+                      <q3:Y>238</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>103</q3:X>
+                      <q3:Y>322</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>179</q3:X>
+                      <q3:Y>362</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>81</q3:X>
+                      <q3:Y>342</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>68</q3:X>
+                      <q3:Y>307</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>542</q3:X>
+                      <q3:Y>288</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>526</q3:X>
+                      <q3:Y>244</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>556</q3:X>
+                      <q3:Y>244</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>556</q3:X>
+                      <q3:Y>299</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>522</q3:X>
+                      <q3:Y>366</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>477</q3:X>
+                      <q3:Y>363</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>429</q3:X>
+                      <q3:Y>372</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>280</q3:X>
+                      <q3:Y>182</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>328</q3:X>
+                      <q3:Y>182</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>329</q3:X>
+                      <q3:Y>260</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>304</q3:X>
+                      <q3:Y>301</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>283</q3:X>
+                      <q3:Y>261</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                </q3:Regions>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:FindContours">
+                <q3:Mode>External</q3:Mode>
+                <q3:Method>ChainApproxNone</q3:Method>
+                <q3:Offset>
+                  <q3:X>0</q3:X>
+                  <q3:Y>0</q3:Y>
+                </q3:Offset>
+                <q3:MinArea>5</q3:MinArea>
+                <q3:MaxArea xsi:nil="true" />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:DrawContours">
+                <q3:MaxLevel>1</q3:MaxLevel>
+                <q3:Thickness>-1</q3:Thickness>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Flip">
+                <q3:Mode>Vertical</q3:Mode>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Grayscale" />
+            </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Threshold">
+                <q3:ThresholdValue>85</q3:ThresholdValue>
+                <q3:MaxValue>255</q3:MaxValue>
+                <q3:ThresholdType>BinaryInv</q3:ThresholdType>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:Flip">
+                <q3:Mode>Horizontal</q3:Mode>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="q3:MaskPolygon">
+                <q3:Regions>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>44</q3:X>
+                      <q3:Y>122</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>2</q3:X>
+                      <q3:Y>122</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>2</q3:X>
+                      <q3:Y>480</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>44</q3:X>
+                      <q3:Y>480</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>41</q3:X>
+                      <q3:Y>386</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>259</q3:X>
+                      <q3:Y>386</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>259</q3:X>
+                      <q3:Y>454</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>41</q3:X>
+                      <q3:Y>454</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>346</q3:X>
+                      <q3:Y>389</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>604</q3:X>
+                      <q3:Y>389</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>604</q3:X>
+                      <q3:Y>468</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>346</q3:X>
+                      <q3:Y>468</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                  <q3:ArrayOfPoint>
+                    <q3:Point>
+                      <q3:X>556</q3:X>
+                      <q3:Y>205</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>620</q3:X>
+                      <q3:Y>205</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>620</q3:X>
+                      <q3:Y>391</q3:Y>
+                    </q3:Point>
+                    <q3:Point>
+                      <q3:X>556</q3:X>
+                      <q3:Y>391</q3:Y>
+                    </q3:Point>
+                  </q3:ArrayOfPoint>
+                </q3:Regions>
+                <q3:MaskType>ToZeroInv</q3:MaskType>
+                <q3:FillValue>
+                  <q3:Val0>255</q3:Val0>
+                  <q3:Val1>255</q3:Val1>
+                  <q3:Val2>0</q3:Val2>
+                  <q3:Val3>0</q3:Val3>
+                </q3:FillValue>
+              </Combinator>
+            </Expression>
+          </Nodes>
+          <Edges>
+            <Edge>
+              <From>0</From>
+              <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>1</From>
+              <To>2</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>2</From>
+              <To>0</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>3</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>4</From>
+              <To>9</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>5</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>7</From>
+              <To>1</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>8</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>9</From>
+              <To>7</To>
+              <Label>Source1</Label>
+            </Edge>
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q3:CameraCapture">
+          <q3:Index>0</q3:Index>
+          <q3:CaptureProperties />
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge>
+        <From>1</From>
+        <To>0</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>4</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>1</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>5</From>
+        <To>4</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>5</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>6</From>
+        <To>3</To>
+        <Label>Source1</Label>
+      </Edge>
+    </Edges>
+  </Workflow>
+  <ExtensionTypes>
+    <Type>Bonsai.IO.SerialStringWrite, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.StringProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.ExpressionCondition, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.DistinctUntilChanged, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.RoiActivityDetected, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.DrawContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Flip, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.MaskPolygon, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+  </ExtensionTypes>
+</WorkflowBuilder>
