@@ -235,7 +235,7 @@
                 <Nodes>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q1:SerialStringWrite">
-                      <q1:PortName>COM4</q1:PortName>
+                      <q1:PortName>COM5</q1:PortName>
                       <q1:NewLine>\n</q1:NewLine>
                     </Combinator>
                   </Expression>
@@ -845,7 +845,7 @@
                 <Nodes>
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q1:SerialStringWrite">
-                      <q1:PortName>COM4</q1:PortName>
+                      <q1:PortName>COM5</q1:PortName>
                       <q1:NewLine>\n</q1:NewLine>
                     </Combinator>
                   </Expression>
@@ -944,6 +944,11 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="Take">
                 <Count>1</Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT3S</DueTime>
               </Combinator>
             </Expression>
           </Nodes>
@@ -1060,7 +1065,7 @@
             </Edge>
             <Edge>
               <From>17</From>
-              <To>16</To>
+              <To>28</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1117,6 +1122,11 @@
               <From>27</From>
               <To>26</To>
               <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>28</From>
+              <To>16</To>
+              <Label>Source1</Label>
             </Edge>
           </Edges>
         </Workflow>
@@ -1343,6 +1353,11 @@ def process(value):
           </Edges>
         </Workflow>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="Delay">
+          <DueTime>PT3S</DueTime>
+        </Combinator>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -1367,7 +1382,7 @@ def process(value):
       </Edge>
       <Edge>
         <From>6</From>
-        <To>13</To>
+        <To>14</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1395,6 +1410,11 @@ def process(value):
         <To>0</To>
         <Label>Source1</Label>
       </Edge>
+      <Edge>
+        <From>14</From>
+        <To>13</To>
+        <Label>Source1</Label>
+      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -1414,6 +1434,7 @@ def process(value):
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.MaskPolygon, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
