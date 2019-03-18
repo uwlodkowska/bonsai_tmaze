@@ -576,8 +576,8 @@
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
                           <q3:Point>
-                            <q3:X>60</q3:X>
-                            <q3:Y>240</q3:Y>
+                            <q3:X>47</q3:X>
+                            <q3:Y>236</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>100</q3:X>
@@ -592,12 +592,12 @@
                             <q3:Y>362</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>81</q3:X>
-                            <q3:Y>342</q3:Y>
+                            <q3:X>88</q3:X>
+                            <q3:Y>388</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>68</q3:X>
-                            <q3:Y>307</q3:Y>
+                            <q3:X>58</q3:X>
+                            <q3:Y>326</q3:Y>
                           </q3:Point>
                         </q3:ArrayOfPoint>
                         <q3:ArrayOfPoint>
@@ -614,8 +614,8 @@
                             <q3:Y>244</q3:Y>
                           </q3:Point>
                           <q3:Point>
-                            <q3:X>556</q3:X>
-                            <q3:Y>299</q3:Y>
+                            <q3:X>511</q3:X>
+                            <q3:Y>352</q3:Y>
                           </q3:Point>
                           <q3:Point>
                             <q3:X>522</q3:X>
@@ -687,7 +687,7 @@
                   <Expression xsi:type="WorkflowOutput" />
                   <Expression xsi:type="Combinator">
                     <Combinator xsi:type="q3:Threshold">
-                      <q3:ThresholdValue>85</q3:ThresholdValue>
+                      <q3:ThresholdValue>57</q3:ThresholdValue>
                       <q3:MaxValue>255</q3:MaxValue>
                       <q3:ThresholdType>BinaryInv</q3:ThresholdType>
                     </Combinator>
@@ -947,9 +947,83 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
-              <Combinator xsi:type="Delay">
-                <DueTime>PT3S</DueTime>
+              <Combinator xsi:type="q3:VideoWriter">
+                <q3:FileName>neutral.avi</q3:FileName>
+                <q3:Suffix>FileCount</q3:Suffix>
+                <q3:Buffered>true</q3:Buffered>
+                <q3:Overwrite>false</q3:Overwrite>
+                <q3:FourCC>FMP4</q3:FourCC>
+                <q3:FrameRate>30</q3:FrameRate>
+                <q3:FrameSize>
+                  <q3:Width>0</q3:Width>
+                  <q3:Height>0</q3:Height>
+                </q3:FrameSize>
+                <q3:ResizeInterpolation>NearestNeighbor</q3:ResizeInterpolation>
               </Combinator>
+            </Expression>
+            <Expression xsi:type="SubscribeSubject">
+              <Name>delay</Name>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>it</q2:Expression>
+            </Expression>
+            <Expression xsi:type="NestedWorkflow">
+              <Name>o_start_dr</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q1:SerialStringWrite">
+                      <q1:PortName>COM4</q1:PortName>
+                      <q1:NewLine>\n</q1:NewLine>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="StringProperty">
+                      <Value>-1</Value>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge>
+                    <From>0</From>
+                    <To>3</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>1</From>
+                    <To>0</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>2</From>
+                    <To>1</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                </Edges>
+              </Workflow>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="SkipUntil" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Delay">
+                <DueTime>PT4S</DueTime>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="q2:ExpressionCondition">
+              <q2:Expression>!it</q2:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="BooleanProperty">
+                <Value>false</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="Merge" />
             </Expression>
           </Nodes>
           <Edges>
@@ -1015,7 +1089,7 @@
             </Edge>
             <Edge>
               <From>13</From>
-              <To>15</To>
+              <To>32</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1061,6 +1135,11 @@
             <Edge>
               <From>16</From>
               <To>6</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>17</From>
+              <To>16</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -1124,9 +1203,49 @@
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>28</From>
-              <To>16</To>
+              <From>29</From>
+              <To>30</To>
               <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>29</From>
+              <To>34</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>30</From>
+              <To>33</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>31</From>
+              <To>35</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>32</From>
+              <To>15</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>33</From>
+              <To>31</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>34</From>
+              <To>36</To>
+              <Label>Source2</Label>
+            </Edge>
+            <Edge>
+              <From>35</From>
+              <To>36</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>36</From>
+              <To>32</To>
+              <Label>Source2</Label>
             </Edge>
           </Edges>
         </Workflow>
@@ -1305,57 +1424,20 @@ def process(value):
           <q4:Filter>B</q4:Filter>
         </Combinator>
       </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>delay</Name>
+      </Expression>
+      <Expression xsi:type="BehaviorSubject">
+        <Name>delay</Name>
+      </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="q1:TextWriter">
-          <q1:FileName>debug\started_main_flow.txt</q1:FileName>
-          <q1:Suffix>FileCount</q1:Suffix>
-          <q1:Buffered>true</q1:Buffered>
-          <q1:Overwrite>false</q1:Overwrite>
-          <q1:Append>false</q1:Append>
+        <Combinator xsi:type="BooleanProperty">
+          <Value>true</Value>
         </Combinator>
       </Expression>
-      <Expression xsi:type="NestedWorkflow">
-        <Name>o_start_dr</Name>
-        <Workflow>
-          <Nodes>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
-                <q1:NewLine>\n</q1:NewLine>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="Combinator">
-              <Combinator xsi:type="StringProperty">
-                <Value>-1</Value>
-              </Combinator>
-            </Expression>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
-            </Expression>
-            <Expression xsi:type="WorkflowOutput" />
-          </Nodes>
-          <Edges>
-            <Edge>
-              <From>0</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>1</From>
-              <To>0</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>2</From>
-              <To>1</To>
-              <Label>Source1</Label>
-            </Edge>
-          </Edges>
-        </Workflow>
-      </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="Delay">
-          <DueTime>PT3S</DueTime>
+        <Combinator xsi:type="BooleanProperty">
+          <Value>false</Value>
         </Combinator>
       </Expression>
     </Nodes>
@@ -1371,18 +1453,18 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
+        <From>2</From>
+        <To>15</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
         <From>3</From>
-        <To>12</To>
+        <To>0</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
         <From>5</From>
         <To>2</To>
-        <Label>Source1</Label>
-      </Edge>
-      <Edge>
-        <From>6</From>
-        <To>14</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
@@ -1406,13 +1488,13 @@ def process(value):
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>12</From>
-        <To>0</To>
+        <From>14</From>
+        <To>13</To>
         <Label>Source1</Label>
       </Edge>
       <Edge>
-        <From>14</From>
-        <To>13</To>
+        <From>15</From>
+        <To>12</To>
         <Label>Source1</Label>
       </Edge>
     </Edges>
@@ -1434,11 +1516,11 @@ def process(value):
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.MaskPolygon, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.VideoWriter, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Delay, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Expressions.MulticastSubjectBuilder, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Expressions.BooleanProperty, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.IO.TextWriter, Bonsai.System, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>

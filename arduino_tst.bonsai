@@ -68,7 +68,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
@@ -107,7 +107,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
@@ -221,7 +221,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
@@ -290,7 +290,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
@@ -334,7 +334,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
@@ -383,7 +383,7 @@
           <Nodes>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:SerialStringWrite">
-                <q1:PortName>COM4</q1:PortName>
+                <q1:PortName>COM5</q1:PortName>
                 <q1:NewLine>\n</q1:NewLine>
               </Combinator>
             </Expression>
