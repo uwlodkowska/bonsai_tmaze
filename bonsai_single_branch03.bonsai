@@ -3560,7 +3560,7 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q4:KeyDown">
-          <q4:Filter>A</q4:Filter>
+          <q4:Filter>C</q4:Filter>
         </Combinator>
       </Expression>
     </Nodes>
