@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WorkflowBuilder Version="2.3.0">
-  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns="https://horizongir.org/bonsai">
+  <Workflow xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q1="clr-namespace:Bonsai.IO;assembly=Bonsai.System" xmlns:q2="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting" xmlns:q3="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision" xmlns:q4="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input" xmlns="https://horizongir.org/bonsai">
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="q1:TextWriter">
@@ -475,10 +475,11 @@ def process(value):
   body_content = '{"select" : "kont.B (automated t-maze) 2019"}'
   connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
   result = connection.getresponse()
+  body_content = '{"brightness" : {"value":56}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
 
   client = WebClient()
   client.Headers[HttpRequestHeader.ContentType] = 'application/json'
-  time.sleep(2)
 
   return str(value).lower()</q2:Script>
                   </Expression>
@@ -1103,10 +1104,11 @@ def process(value):
   body_content = '{"select" : "kont.A (automated t-maze) 2019"}'
   connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
   result = connection.getresponse()
+  body_content = '{"brightness" : {"value":50}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
 
   client = WebClient()
   client.Headers[HttpRequestHeader.ContentType] = 'application/json'
-  time.sleep(2)
 
   return str(value).lower()</q2:Script>
                   </Expression>
@@ -2673,33 +2675,6 @@ def process(value):
                       </Edges>
                     </Workflow>
                   </Expression>
-                  <Expression xsi:type="q2:PythonTransform">
-                    <q2:Name>ctxA</q2:Name>
-                    <q2:Script>@returns(str)
-def process(value):
-  import clr
-  clr.AddReference('System.Web.Extensions')
-  from System.Web.Script.Serialization import JavaScriptSerializer
-  from System.Net import * 
-  from System import Convert
-  from System.Text import Encoding
-  import urllib
-  import httplib
-  import time
-
-  token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
-
-  connection =  httplib.HTTPConnection('192.168.62.102:16021')
-  body_content = '{"select" : "kont.A (automated t-maze) 2019"}'
-  connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
-  result = connection.getresponse()
-
-  client = WebClient()
-  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
-  time.sleep(2)
-
-  return str(value).lower()</q2:Script>
-                  </Expression>
                   <Expression xsi:type="WorkflowInput">
                     <Name>Source1</Name>
                   </Expression>
@@ -2757,7 +2732,7 @@ def process(value):
                     <q2:Expression>it=="r"</q2:Expression>
                   </Expression>
                   <Expression xsi:type="q2:PythonTransform">
-                    <q2:Name>ctxB</q2:Name>
+                    <q2:Name>ctxA</q2:Name>
                     <q2:Script>@returns(str)
 def process(value):
   import clr
@@ -2773,13 +2748,14 @@ def process(value):
   token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
 
   connection =  httplib.HTTPConnection('192.168.62.102:16021')
-  body_content = '{"select" : "kont.B (automated t-maze) 2019"}'
+  body_content = '{"select" : "kont.A (automated t-maze) 2019"}'
   connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
   result = connection.getresponse()
+  body_content = '{"brightness" : {"value":50}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
 
   client = WebClient()
   client.Headers[HttpRequestHeader.ContentType] = 'application/json'
-  time.sleep(2)
 
   return str(value).lower()</q2:Script>
                   </Expression>
@@ -3093,21 +3069,49 @@ def process(value):
                       </Edges>
                     </Workflow>
                   </Expression>
+                  <Expression xsi:type="q2:PythonTransform">
+                    <q2:Name>ctxB</q2:Name>
+                    <q2:Script>@returns(str)
+def process(value):
+  import clr
+  clr.AddReference('System.Web.Extensions')
+  from System.Web.Script.Serialization import JavaScriptSerializer
+  from System.Net import * 
+  from System import Convert
+  from System.Text import Encoding
+  import urllib
+  import httplib
+  import time
+
+  token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
+
+  connection =  httplib.HTTPConnection('192.168.62.102:16021')
+  body_content = '{"select" : "kont.B (automated t-maze) 2019"}'
+  connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
+  result = connection.getresponse()
+  body_content = '{"brightness" : {"value":56}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
+
+  client = WebClient()
+  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
+
+  return str(value).lower()</q2:Script>
+                  </Expression>
                 </Nodes>
                 <Edges>
+                  <Edge>
+                    <From>0</From>
+                    <To>25</To>
+                    <Label>Source2</Label>
+                  </Edge>
                   <Edge>
                     <From>0</From>
                     <To>26</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>0</From>
-                    <To>27</To>
-                    <Label>Source2</Label>
-                  </Edge>
-                  <Edge>
                     <From>1</From>
-                    <To>24</To>
+                    <To>23</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -3132,7 +3136,7 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>5</From>
-                    <To>16</To>
+                    <To>15</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -3157,12 +3161,12 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>10</From>
-                    <To>25</To>
+                    <To>24</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>11</From>
-                    <To>20</To>
+                    <To>19</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -3172,17 +3176,42 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>12</From>
-                    <To>30</To>
+                    <To>29</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>13</From>
-                    <To>23</To>
+                    <To>11</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>14</From>
-                    <To>11</To>
+                    <From>13</From>
+                    <To>16</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>13</From>
+                    <To>7</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>13</From>
+                    <To>6</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>13</From>
+                    <To>3</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>13</From>
+                    <To>27</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>13</From>
+                    <To>28</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -3192,53 +3221,38 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>14</From>
-                    <To>7</To>
+                    <To>20</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>14</From>
-                    <To>6</To>
+                    <From>16</From>
+                    <To>19</To>
+                    <Label>Source2</Label>
+                  </Edge>
+                  <Edge>
+                    <From>16</From>
+                    <To>8</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>14</From>
-                    <To>3</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>14</From>
-                    <To>28</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>14</From>
-                    <To>29</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>15</From>
-                    <To>18</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>15</From>
+                    <From>17</From>
                     <To>21</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>17</From>
-                    <To>20</To>
+                    <To>23</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>17</From>
-                    <To>8</To>
+                    <To>26</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>18</From>
-                    <To>13</To>
-                    <Label>Source1</Label>
+                    <To>9</To>
+                    <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>18</From>
@@ -3246,23 +3260,23 @@ def process(value):
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>18</From>
-                    <To>27</To>
+                    <From>19</From>
+                    <To>18</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>19</From>
-                    <To>9</To>
-                    <Label>Source2</Label>
-                  </Edge>
-                  <Edge>
-                    <From>19</From>
-                    <To>25</To>
-                    <Label>Source2</Label>
+                    <From>20</From>
+                    <To>32</To>
+                    <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>20</From>
-                    <To>19</To>
+                    <To>2</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>20</From>
+                    <To>25</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -3271,49 +3285,39 @@ def process(value):
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>21</From>
-                    <To>2</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>21</From>
-                    <To>26</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
                     <From>22</From>
-                    <To>23</To>
-                    <Label>Source2</Label>
-                  </Edge>
-                  <Edge>
-                    <From>23</From>
                     <To>12</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>24</From>
+                    <From>23</From>
                     <To>7</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>25</From>
+                    <From>24</From>
                     <To>0</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>26</From>
+                    <From>25</From>
                     <To>3</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>27</From>
-                    <To>28</To>
+                    <From>26</From>
+                    <To>27</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>28</From>
+                    <From>27</From>
                     <To>4</To>
                     <Label>Source4</Label>
+                  </Edge>
+                  <Edge>
+                    <From>28</From>
+                    <To>29</To>
+                    <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>29</From>
@@ -3327,17 +3331,17 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>31</From>
-                    <To>32</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>32</From>
                     <To>8</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>32</From>
+                    <From>31</From>
                     <To>10</To>
+                    <Label>Source2</Label>
+                  </Edge>
+                  <Edge>
+                    <From>32</From>
+                    <To>22</To>
                     <Label>Source2</Label>
                   </Edge>
                 </Edges>
@@ -3521,6 +3525,44 @@ def process(value):
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="Zip" />
       </Expression>
+      <Expression xsi:type="q2:PythonTransform">
+        <q2:Name>ctxA</q2:Name>
+        <q2:Script>@returns(str)
+def process(value):
+  import clr
+  clr.AddReference('System.Web.Extensions')
+  from System.Web.Script.Serialization import JavaScriptSerializer
+  from System.Net import * 
+  from System import Convert
+  from System.Text import Encoding
+  import urllib
+  import httplib
+  import time
+
+  token = 'r03risfvqROsqTcuB3MAzgDkUhHUw6Qn'
+
+  connection =  httplib.HTTPConnection('192.168.62.102:16021')
+  body_content = '{"select" : "kont. neutral (automated t-maze) 2019"}'
+  connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
+  result = connection.getresponse()
+  body_content = '{"brightness" : {"value":65}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
+
+  client = WebClient()
+  client.Headers[HttpRequestHeader.ContentType] = 'application/json'
+
+  return str(value).lower()</q2:Script>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="BooleanProperty">
+          <Value>true</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="q4:KeyDown">
+          <q4:Filter>A</q4:Filter>
+        </Combinator>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge>
@@ -3583,6 +3625,16 @@ def process(value):
         <To>12</To>
         <Label>Source1</Label>
       </Edge>
+      <Edge>
+        <From>15</From>
+        <To>14</To>
+        <Label>Source1</Label>
+      </Edge>
+      <Edge>
+        <From>16</From>
+        <To>2</To>
+        <Label>Source1</Label>
+      </Edge>
     </Edges>
   </Workflow>
   <ExtensionTypes>
@@ -3612,5 +3664,6 @@ def process(value):
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.TakeUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.VideoWriter, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
