@@ -152,6 +152,9 @@
                 <Value>-1,-2,-3</Value>
               </Combinator>
             </Expression>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
             <Expression xsi:type="q2:PythonTransform">
               <q2:Name>ctx_neutral</q2:Name>
               <q2:Script>@returns(str)
@@ -172,15 +175,13 @@ def process(value):
   body_content = '{"select" : "kont. neutral (automated t-maze) 2019"}'
   connection.request('PUT', '/api/v1/' + token + '/effects', body_content)
   result = connection.getresponse()
+  body_content = '{"brightness" : {"value":65}}'
+  connection.request('PUT', '/api/v1/' + token + '/state', body_content)
 
   client = WebClient()
   client.Headers[HttpRequestHeader.ContentType] = 'application/json'
-  time.sleep(2)
 
   return str(value).lower()</q2:Script>
-            </Expression>
-            <Expression xsi:type="WorkflowInput">
-              <Name>Source1</Name>
             </Expression>
           </Nodes>
           <Edges>
@@ -196,7 +197,7 @@ def process(value):
             </Edge>
             <Edge>
               <From>3</From>
-              <To>5</To>
+              <To>6</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -206,12 +207,12 @@ def process(value):
             </Edge>
             <Edge>
               <From>5</From>
-              <To>2</To>
+              <To>1</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
               <From>6</From>
-              <To>1</To>
+              <To>2</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
