@@ -2418,7 +2418,7 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>4</From>
-                    <To>21</To>
+                    <To>5</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -2428,12 +2428,12 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>5</From>
-                    <To>3</To>
-                    <Label>Source2</Label>
+                    <To>21</To>
+                    <Label>Source1</Label>
                   </Edge>
                   <Edge>
                     <From>6</From>
-                    <To>19</To>
+                    <To>20</To>
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
@@ -2528,18 +2528,18 @@ def process(value):
                   </Edge>
                   <Edge>
                     <From>19</From>
-                    <To>20</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>20</From>
                     <To>0</To>
                     <Label>Source2</Label>
                   </Edge>
                   <Edge>
-                    <From>21</From>
-                    <To>5</To>
+                    <From>20</From>
+                    <To>19</To>
                     <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>21</From>
+                    <To>3</To>
+                    <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>22</From>
