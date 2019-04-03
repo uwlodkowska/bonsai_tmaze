@@ -35,7 +35,7 @@
         <Name>next</Name>
       </Expression>
       <Expression xsi:type="q1:CsvReader">
-        <q1:FileName>training2.csv</q1:FileName>
+        <q1:FileName>training2_half2.csv</q1:FileName>
         <q1:SkipRows>0</q1:SkipRows>
       </Expression>
       <Expression xsi:type="SubscribeSubject">
@@ -1364,291 +1364,6 @@ def process(value):
             <Expression xsi:type="WorkflowOutput" />
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="Zip" />
-            </Expression>
-            <Expression xsi:type="NestedWorkflow">
-              <Name>rois</Name>
-              <Workflow>
-                <Nodes>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:RoiActivity">
-                      <q3:Regions>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>280</q3:X>
-                            <q3:Y>335</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>310</q3:X>
-                            <q3:Y>335</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>310</q3:X>
-                            <q3:Y>410</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>280</q3:X>
-                            <q3:Y>410</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>280</q3:X>
-                            <q3:Y>410</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>148</q3:X>
-                            <q3:Y>104</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>218</q3:X>
-                            <q3:Y>104</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>218</q3:X>
-                            <q3:Y>144</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>148</q3:X>
-                            <q3:Y>144</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>390</q3:X>
-                            <q3:Y>104</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>464</q3:X>
-                            <q3:Y>104</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>464</q3:X>
-                            <q3:Y>148</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>390</q3:X>
-                            <q3:Y>148</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>54</q3:X>
-                            <q3:Y>95</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>98</q3:X>
-                            <q3:Y>95</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>98</q3:X>
-                            <q3:Y>137</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>54</q3:X>
-                            <q3:Y>137</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>514</q3:X>
-                            <q3:Y>107</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>558</q3:X>
-                            <q3:Y>107</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>558</q3:X>
-                            <q3:Y>149</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>514</q3:X>
-                            <q3:Y>149</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>59</q3:X>
-                            <q3:Y>250</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>96</q3:X>
-                            <q3:Y>250</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>96</q3:X>
-                            <q3:Y>322</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>118</q3:X>
-                            <q3:Y>352</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>124</q3:X>
-                            <q3:Y>365</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>182</q3:X>
-                            <q3:Y>376</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>180</q3:X>
-                            <q3:Y>386</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>104</q3:X>
-                            <q3:Y>384</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>96</q3:X>
-                            <q3:Y>374</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>58</q3:X>
-                            <q3:Y>354</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>410</q3:X>
-                            <q3:Y>379</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>506</q3:X>
-                            <q3:Y>360</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>512</q3:X>
-                            <q3:Y>340</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>529</q3:X>
-                            <q3:Y>328</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>529</q3:X>
-                            <q3:Y>250</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>566</q3:X>
-                            <q3:Y>250</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>532</q3:X>
-                            <q3:Y>388</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>413</q3:X>
-                            <q3:Y>398</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                        <q3:ArrayOfPoint>
-                          <q3:Point>
-                            <q3:X>280</q3:X>
-                            <q3:Y>158</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>326</q3:X>
-                            <q3:Y>158</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>326</q3:X>
-                            <q3:Y>246</q3:Y>
-                          </q3:Point>
-                          <q3:Point>
-                            <q3:X>280</q3:X>
-                            <q3:Y>246</q3:Y>
-                          </q3:Point>
-                        </q3:ArrayOfPoint>
-                      </q3:Regions>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:FindContours">
-                      <q3:Mode>External</q3:Mode>
-                      <q3:Method>ChainApproxNone</q3:Method>
-                      <q3:Offset>
-                        <q3:X>0</q3:X>
-                        <q3:Y>0</q3:Y>
-                      </q3:Offset>
-                      <q3:MinArea>5</q3:MinArea>
-                      <q3:MaxArea>2000</q3:MaxArea>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:DrawContours">
-                      <q3:MaxLevel>1</q3:MaxLevel>
-                      <q3:Thickness>-1</q3:Thickness>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:Flip">
-                      <q3:Mode>Vertical</q3:Mode>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:Grayscale" />
-                  </Expression>
-                  <Expression xsi:type="WorkflowInput">
-                    <Name>Source1</Name>
-                  </Expression>
-                  <Expression xsi:type="WorkflowOutput" />
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:Threshold">
-                      <q3:ThresholdValue>48</q3:ThresholdValue>
-                      <q3:MaxValue>255</q3:MaxValue>
-                      <q3:ThresholdType>BinaryInv</q3:ThresholdType>
-                    </Combinator>
-                  </Expression>
-                  <Expression xsi:type="Combinator">
-                    <Combinator xsi:type="q3:Flip">
-                      <q3:Mode>Horizontal</q3:Mode>
-                    </Combinator>
-                  </Expression>
-                </Nodes>
-                <Edges>
-                  <Edge>
-                    <From>0</From>
-                    <To>6</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>1</From>
-                    <To>2</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>2</From>
-                    <To>0</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>3</From>
-                    <To>8</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>4</From>
-                    <To>7</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>5</From>
-                    <To>3</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>7</From>
-                    <To>1</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>8</From>
-                    <To>4</To>
-                    <Label>Source1</Label>
-                  </Edge>
-                </Edges>
-              </Workflow>
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="q1:TextWriter">
@@ -3155,6 +2870,11 @@ def process(value):
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
+                    <From>8</From>
+                    <To>19</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
                     <From>9</From>
                     <To>1</To>
                     <Label>Source1</Label>
@@ -3165,9 +2885,9 @@ def process(value):
                     <Label>Source1</Label>
                   </Edge>
                   <Edge>
-                    <From>11</From>
+                    <From>10</From>
                     <To>19</To>
-                    <Label>Source1</Label>
+                    <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>11</From>
@@ -3223,11 +2943,6 @@ def process(value):
                     <From>14</From>
                     <To>20</To>
                     <Label>Source1</Label>
-                  </Edge>
-                  <Edge>
-                    <From>16</From>
-                    <To>19</To>
-                    <Label>Source2</Label>
                   </Edge>
                   <Edge>
                     <From>16</From>
@@ -3382,11 +3097,300 @@ def process(value):
                 <q3:ResizeInterpolation>NearestNeighbor</q3:ResizeInterpolation>
               </Combinator>
             </Expression>
+            <Expression xsi:type="NestedWorkflow">
+              <Name>rois</Name>
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:RoiActivity">
+                      <q3:Regions>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>280</q3:X>
+                            <q3:Y>335</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>310</q3:X>
+                            <q3:Y>335</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>310</q3:X>
+                            <q3:Y>410</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>280</q3:X>
+                            <q3:Y>410</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>280</q3:X>
+                            <q3:Y>410</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>148</q3:X>
+                            <q3:Y>104</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>218</q3:X>
+                            <q3:Y>104</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>218</q3:X>
+                            <q3:Y>144</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>148</q3:X>
+                            <q3:Y>144</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>390</q3:X>
+                            <q3:Y>104</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>464</q3:X>
+                            <q3:Y>104</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>464</q3:X>
+                            <q3:Y>148</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>390</q3:X>
+                            <q3:Y>148</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>54</q3:X>
+                            <q3:Y>95</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>98</q3:X>
+                            <q3:Y>95</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>98</q3:X>
+                            <q3:Y>137</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>54</q3:X>
+                            <q3:Y>137</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>514</q3:X>
+                            <q3:Y>107</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>558</q3:X>
+                            <q3:Y>107</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>558</q3:X>
+                            <q3:Y>149</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>514</q3:X>
+                            <q3:Y>149</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>59</q3:X>
+                            <q3:Y>250</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>96</q3:X>
+                            <q3:Y>250</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>96</q3:X>
+                            <q3:Y>322</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>118</q3:X>
+                            <q3:Y>352</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>124</q3:X>
+                            <q3:Y>365</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>182</q3:X>
+                            <q3:Y>376</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>180</q3:X>
+                            <q3:Y>386</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>104</q3:X>
+                            <q3:Y>384</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>96</q3:X>
+                            <q3:Y>374</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>58</q3:X>
+                            <q3:Y>354</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>406</q3:X>
+                            <q3:Y>366</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>506</q3:X>
+                            <q3:Y>360</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>512</q3:X>
+                            <q3:Y>340</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>530</q3:X>
+                            <q3:Y>297</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>529</q3:X>
+                            <q3:Y>250</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>548</q3:X>
+                            <q3:Y>230</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>540</q3:X>
+                            <q3:Y>350</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>527</q3:X>
+                            <q3:Y>374</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>409</q3:X>
+                            <q3:Y>384</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                        <q3:ArrayOfPoint>
+                          <q3:Point>
+                            <q3:X>281</q3:X>
+                            <q3:Y>103</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>325</q3:X>
+                            <q3:Y>103</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>326</q3:X>
+                            <q3:Y>246</q3:Y>
+                          </q3:Point>
+                          <q3:Point>
+                            <q3:X>280</q3:X>
+                            <q3:Y>246</q3:Y>
+                          </q3:Point>
+                        </q3:ArrayOfPoint>
+                      </q3:Regions>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:FindContours">
+                      <q3:Mode>External</q3:Mode>
+                      <q3:Method>ChainApproxNone</q3:Method>
+                      <q3:Offset>
+                        <q3:X>0</q3:X>
+                        <q3:Y>0</q3:Y>
+                      </q3:Offset>
+                      <q3:MinArea>5</q3:MinArea>
+                      <q3:MaxArea>2000</q3:MaxArea>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:DrawContours">
+                      <q3:MaxLevel>1</q3:MaxLevel>
+                      <q3:Thickness>-1</q3:Thickness>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:Flip">
+                      <q3:Mode>Vertical</q3:Mode>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:Grayscale" />
+                  </Expression>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:Threshold">
+                      <q3:ThresholdValue>53</q3:ThresholdValue>
+                      <q3:MaxValue>255</q3:MaxValue>
+                      <q3:ThresholdType>BinaryInv</q3:ThresholdType>
+                    </Combinator>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="q3:Flip">
+                      <q3:Mode>Horizontal</q3:Mode>
+                    </Combinator>
+                  </Expression>
+                </Nodes>
+                <Edges>
+                  <Edge>
+                    <From>0</From>
+                    <To>6</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>1</From>
+                    <To>2</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>2</From>
+                    <To>0</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>3</From>
+                    <To>8</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>4</From>
+                    <To>7</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>5</From>
+                    <To>3</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>7</From>
+                    <To>1</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                  <Edge>
+                    <From>8</From>
+                    <To>4</To>
+                    <Label>Source1</Label>
+                  </Edge>
+                </Edges>
+              </Workflow>
+            </Expression>
           </Nodes>
           <Edges>
             <Edge>
               <From>0</From>
-              <To>20</To>
+              <To>19</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -3396,12 +3400,12 @@ def process(value):
             </Edge>
             <Edge>
               <From>1</From>
-              <To>20</To>
+              <To>19</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
               <From>2</From>
-              <To>17</To>
+              <To>16</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -3436,7 +3440,7 @@ def process(value):
             </Edge>
             <Edge>
               <From>7</From>
-              <To>15</To>
+              <To>14</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -3446,17 +3450,17 @@ def process(value):
             </Edge>
             <Edge>
               <From>9</From>
-              <To>13</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>9</From>
               <To>21</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
+              <From>9</From>
+              <To>20</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
               <From>10</From>
-              <To>19</To>
+              <To>18</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
@@ -3465,58 +3469,58 @@ def process(value):
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>13</From>
-              <To>8</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>13</From>
-              <To>3</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>13</From>
-              <To>4</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>13</From>
-              <To>16</To>
-              <Label>Source1</Label>
-            </Edge>
-            <Edge>
-              <From>15</From>
-              <To>16</To>
+              <From>14</From>
+              <To>15</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>16</From>
+              <From>15</From>
               <To>2</To>
               <Label>Source3</Label>
             </Edge>
             <Edge>
-              <From>16</From>
-              <To>14</To>
+              <From>15</From>
+              <To>13</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>17</From>
+              <From>16</From>
               <To>1</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>19</From>
+              <From>18</From>
               <To>12</To>
               <Label>Source2</Label>
             </Edge>
             <Edge>
-              <From>20</From>
+              <From>19</From>
               <To>11</To>
               <Label>Source1</Label>
             </Edge>
             <Edge>
-              <From>20</From>
-              <To>18</To>
+              <From>19</From>
+              <To>17</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>21</From>
+              <To>8</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>21</From>
+              <To>3</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>21</From>
+              <To>4</To>
+              <Label>Source1</Label>
+            </Edge>
+            <Edge>
+              <From>21</From>
+              <To>15</To>
               <Label>Source1</Label>
             </Edge>
           </Edges>
@@ -3656,14 +3660,14 @@ def process(value):
     <Type>Bonsai.Scripting.PythonTransform, Bonsai.Scripting, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.CameraCapture, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Reactive.Zip, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Reactive.TakeUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
+    <Type>Bonsai.Vision.VideoWriter, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.RoiActivity, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.FindContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.DrawContours, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Flip, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Grayscale, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Vision.Threshold, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Reactive.TakeUntil, Bonsai.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
-    <Type>Bonsai.Vision.VideoWriter, Bonsai.Vision, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</Type>
     <Type>Bonsai.Windows.Input.KeyDown, Bonsai.Windows.Input, Version=2.2.0.0, Culture=neutral, PublicKeyToken=null</Type>
   </ExtensionTypes>
 </WorkflowBuilder>
